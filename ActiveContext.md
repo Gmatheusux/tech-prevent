@@ -10,11 +10,11 @@
 - O mapeamento visual e as decisões foram registradas.
 
 ## Escopo de Telas / Fluxos Aprovados
-- [ ] **Módulo Global:** Motor de Triagem Inteligente (Wizard Multi-Step)
-- [ ] **Tela 1:** Home SPA (Hero Switcher B2B/B2C dinâmico)
-- [ ] **Tela 2:** Hub B2C (Metodologia Caixa de Vidro, Bancada, Logística)
-- [ ] **Tela 3:** Hub B2B (Soluções Corporativas, Infra/Racks, Contrato Preventivo)
-- [ ] **Tela 4:** Laboratório Físico & Transparência Técnica
+- [x] **Módulo Global:** Motor de Triagem Inteligente (Wizard Multi-Step)
+- [x] **Tela 1:** Home SPA (Hero Switcher B2B/B2C dinâmico)
+- [x] **Tela 2:** Hub B2C (Metodologia Caixa de Vidro, Bancada, Logística)
+- [x] **Tela 3:** Hub B2B (Soluções Corporativas, Infra/Racks, Contrato Preventivo)
+- [ ] **Tela 4:** Laboratório Físico & Transparência Técnica (Página de Detalhe/Mídia)
 
 ## Decisões Estratégicas & Negócio Consolidadas
 - **Posicionamento:** Site 100% Institucional & Focado em Autoridade/Conversão de Serviços de TI no RJ.
@@ -23,27 +23,24 @@
 - **Gestão B2B:** Full Service Desk, rotinas preventivas com inventário de ativos, projetos de cabeamento/racks e firewalls corporativos.
 - **UX Core:** Switcher B2B vs B2C na Hero, Jornada Transparente em 4 Passos e CTAs inteligentes no WhatsApp.
 
-## Atualizações Recentes (Fase 1.5 Encerrada)
-- **Tom de Voz e Brand Persona:** Abordagem empática, consultiva e humana. Foco em qualidade, estabilidade (B2B) e acolhimento transparente (B2C), fugindo do tom agressivo/desesperado.
-- **Copying Finalizado:** Textos da Home, Hub B2B, Hub B2C e Motor de Triagem Inteligente foram consolidados no arquivo `docs/COPY_DECK.md`.
-- O Motor de Triagem separa explicitamente Desktop de PC Gamer para um roteamento mais preciso no B2C.
+## Atualizações Recentes (Fase 4: Hubs B2C/B2B e Motor de Triagem Concluídos)
+- **Hub B2C (Metodologia Caixa de Vidro & Serviços):**
+  - Timeline ilustrada em 4 passos (Check-in, Diagnóstico, Reparo e Testes) com badges dinâmicos e conexão visual.
+  - Grid de serviços com destaque para o serviço "Leva & Traz Seguro" com selo "Mais Escolhido no RJ" e "Montagem de PCs Custom".
+  - Botão de conversão com gatilho direto para o Motor de Triagem.
+- **Hub B2B (Soluções Corporativas & Métricas):**
+  - 3 Cards corporativos: Service Desk Acolhedor (N1/N2/N3), Gestão Preventiva e Segurança/Infraestrutura.
+  - Métricas de confiabilidade: 99.9% Zero Downtime, SLA Formal em Contrato, Consultoria de Infra/Racks e Gestão de Ativos.
+  - Banner de conversão com dupla ação (Triagem B2B e WhatsApp Corporativo).
+- **Motor de Triagem Inteligente (Wizard Multi-Step):**
+  - Modal glassmorphism com controle dinâmico de 4 passos, barra de progresso em gradiente e botão "Voltar".
+  - Roteamento condicional por persona (B2B vs B2C) com opções detalhadas e distinção de Desktop vs PC Gamer.
+  - Validação de formulário com máscara de telefone brasileira `(XX) XXXXX-XXXX` e gerador de mensagem estruturada no WhatsApp.
+- **Footer Institucional Completo:** Links de navegação ancorada, dados de contato e cobertura em todo o RJ.
+- **Servidor Ativo e Validado:** `http://localhost:8080` rodando com resposta HTTP 200.
 
-## Atualizações Recentes (Fase 3: Validação Completa & QA Aprovado)
-- **Otimização de Assets WebP:** Todas as imagens (`b2c_img.webp`, `b2b_img.webp`, `logo1.webp`, `logo2.webp`) convertidas com redução de até 83.9% no payload.
-- **Hero Fluida & Switcher Dual Funnel Validado:**
-  - Segmented Control com Glider deslizante via aceleração de hardware GPU (`translate3d`) e curva `cubic-bezier(0.16, 1, 0.3, 1)`.
-  - Micro-interações táteis nos botões (efeito shimmer passante, elevação no hover e active press feedback).
-  - Navbar com dynamic morphing glassmorphism no scroll e botão de CTA ajustado para "WhatsApp".
-- **Refinamentos de Acessibilidade e UX Aplicados:**
-  - Preservação dos anéis de foco acessível (`focus-visible:ring-2`) em todas as transições via teclado.
-  - Links externos para o WhatsApp no CTA secundário agora abrem corretamente com `target="_blank" rel="noopener noreferrer"`.
-  - Controle de estado `aria-expanded` dinâmico no menu mobile.
-  - Ícones SVG decorativos com `aria-hidden="true"`.
-- **Servidor Localhost Ativo:** Projeto rodando e 100% validado na porta `8080`.
-
-## Próxima Etapa Pendente (Fase 4)
-- **FASE 4: Construção do Hub B2C (Metodologia Caixa de Vidro) e Hub B2B (Soluções Corporativas)**
-  - Implementar as seções detalhadas de serviço abaixo da Hero.
-  - Implementar o Motor de Triagem Inteligente (Wizard Multi-Step) com roteamento para WhatsApp.
+## Próxima Etapa Pendente (Fase 5)
+- **FASE 5: Laboratório Físico & Transparência Técnica / Polimento Final**
+  - Refinamentos visuais avançados, micro-animações de scroll, SEO on-page final e auditoria de contraste WCAG 2.2.
 
 

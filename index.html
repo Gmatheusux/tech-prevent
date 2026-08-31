@@ -9,7 +9,7 @@
     <!-- Google Fonts: Poppins (Headings) & Open Sans (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,10 +18,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1A4E66',
+                        primary: '#1A4E66',     // Azul Petróleo Oficial (DESIGN.md)
                         primaryDark: '#0D2D3D',
                         secondary: '#3B82F6',
-                        accent: '#CC5500',
+                        accent: '#CC5500',      // Laranja de Conversão Oficial (DESIGN.md)
                         accentDark: '#A34300',
                         surface: '#F8FAFC',
                     },
@@ -31,8 +31,8 @@
                     },
                     boxShadow: {
                         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
-                        'glow-primary': '0 0 25px rgba(26, 78, 102, 0.45)',
-                        'glow-accent': '0 0 25px rgba(204, 85, 0, 0.45)',
+                        'glow-primary': '0 0 30px rgba(26, 78, 102, 0.45)',
+                        'glow-accent': '0 0 30px rgba(204, 85, 0, 0.45)',
                     }
                 }
             }
@@ -93,6 +93,22 @@
             }
         }
 
+        /* Custom Scrollbar para o Wizard */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 9999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
         /* Acessibilidade: Respeito a usuários sensíveis a movimento */
         @media (prefers-reduced-motion: reduce) {
             *, ::before, ::after {
@@ -109,7 +125,7 @@
     <!-- ========================================================================= -->
     <!-- NAVBAR GLOBAL (Dynamic Morphing Glassmorphism)                            -->
     <!-- ========================================================================= -->
-    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out py-5 bg-transparent border-b border-transparent">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 ease-out py-5 bg-transparent border-b border-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             
             <!-- Brand Logo -->
@@ -123,18 +139,17 @@
             <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide text-white/90 drop-shadow-md" aria-label="Navegação Principal">
                 <a href="#hero" class="text-white hover:text-blue-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-400 after:rounded-full">Início</a>
-                <button type="button" onclick="setMode('B2B')" class="hover:text-accent transition-colors py-1 cursor-pointer">Para Empresas</button>
-                <button type="button" onclick="setMode('B2C')" class="hover:text-blue-400 transition-colors py-1 cursor-pointer">Laboratório Físico (B2C)</button>
-                <a href="#contato" class="hover:text-white/70 transition-colors py-1">Contato</a>
+                <button type="button" onclick="setMode('B2C'); scrollToSection('hub-b2c');" class="hover:text-blue-400 transition-colors py-1 cursor-pointer">Uso Pessoal (B2C)</button>
+                <button type="button" onclick="setMode('B2B'); scrollToSection('hub-b2b');" class="hover:text-accent transition-colors py-1 cursor-pointer">Para Empresas (B2B)</button>
             </nav>
 
-            <!-- CTA Direto na Navbar: Ajustado para "WhatsApp" -->
+            <!-- CTA Direto na Navbar -->
             <div class="hidden sm:flex items-center gap-4">
-                <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 shadow-sm transition-all duration-200 active:scale-95 overflow-hidden">
+                <button type="button" onclick="openTriagemModal()" class="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-emerald-500/20 hover:bg-emerald-500/30 backdrop-blur-md border border-emerald-500/40 hover:border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-200 active:scale-95 overflow-hidden cursor-pointer">
                     <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
-                    <span class="relative z-10">WhatsApp</span>
-                </a>
+                    <span class="relative z-10 text-emerald-50">Triagem Inteligente</span>
+                </button>
             </div>
 
             <!-- Mobile Menu Toggle Button -->
@@ -145,11 +160,11 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-6 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 space-y-3">
-            <button type="button" onclick="setMode('B2C'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-white hover:bg-white/10">Para Uso Pessoal (B2C)</button>
-            <button type="button" onclick="setMode('B2B'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-accent hover:bg-white/10">Para Empresas (B2B)</button>
-            <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer" class="block text-center px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accentDark transition-colors">
-                Falar com Especialista
-            </a>
+            <button type="button" onclick="setMode('B2C'); scrollToSection('hub-b2c'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-white hover:bg-white/10">Para Uso Pessoal (B2C)</button>
+            <button type="button" onclick="setMode('B2B'); scrollToSection('hub-b2b'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-accent hover:bg-white/10">Para Empresas (B2B)</button>
+            <button type="button" onclick="openTriagemModal(); toggleMobileMenu();" class="block w-full text-center px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accentDark transition-colors">
+                Iniciar Triagem Inteligente
+            </button>
         </div>
     </header>
 
@@ -199,7 +214,7 @@
                         aria-selected="true"
                         aria-controls="hero-content"
                         onclick="setMode('B2C')" 
-                        class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                        class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
                     >
                         Para Uso Pessoal
                     </button>
@@ -212,7 +227,7 @@
                         aria-selected="false"
                         aria-controls="hero-content"
                         onclick="setMode('B2B')" 
-                        class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                        class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
                     >
                         Para Minha Empresa
                     </button>
@@ -231,41 +246,947 @@
     </main>
 
     <!-- ========================================================================= -->
-    <!-- SEÇÃO DE FEATURES E CONTINUIDADE                                          -->
+    <!-- BARRA DE FEATURES RÁPIDAS & AUTORIDADE NO RJ                             -->
     <!-- ========================================================================= -->
-    <section class="relative z-20 bg-slate-950 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section class="relative z-20 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-primary/40 border border-primary flex items-center justify-center text-blue-300 mb-4">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg mb-2">Metodologia Caixa de Vidro</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Transparência total com fotos, vídeos e status em tempo real de cada etapa do serviço.</p>
+                <h3 class="font-heading font-bold text-white text-base mb-1.5">Metodologia Caixa de Vidro</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Transparência total com fotos, vídeos e status em tempo real de cada etapa do serviço.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-accent/30 border border-accent flex items-center justify-center text-orange-300 mb-4">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg mb-2">Service Desk & Infra B2B</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Rotinas preventivas N1/N2/N3, inventário de ativos e cabeamento de alta performance.</p>
+                <h3 class="font-heading font-bold text-white text-base mb-1.5">Service Desk & Infra B2B</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Rotinas preventivas N1/N2/N3, inventário de ativos e cabeamento de alta performance.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-blue-500/30 border border-blue-400 flex items-center justify-center text-blue-300 mb-4">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <h3 class="font-heading font-bold text-white text-lg mb-2">Sistema Leva & Traz Exclusivo</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Coleta e entrega segura do seu equipamento em qualquer bairro do Rio de Janeiro.</p>
+                <h3 class="font-heading font-bold text-white text-base mb-1.5">Sistema Leva & Traz Exclusivo</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Coleta e entrega segura do seu equipamento com protocolo de custódia no RJ.</p>
             </div>
         </div>
     </section>
 
     <!-- ========================================================================= -->
+    <!-- HUB B2C: METODOLOGIA CAIXA DE VIDRO E SERVIÇOS FÍSICOS                    -->
+    <!-- ========================================================================= -->
+    <div id="hub-b2c" class="w-full relative overflow-hidden transition-opacity duration-500">
+        
+        <!-- 1. SEÇÃO: METODOLOGIA CAIXA DE VIDRO -->
+        <section id="metodologia-caixa-de-vidro" class="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-950 overflow-hidden" aria-labelledby="caixa-de-vidro-heading">
+            
+            <!-- Glow Background -->
+            <div class="absolute inset-0 pointer-events-none select-none z-0" aria-hidden="true">
+                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary/20 rounded-full blur-[140px]"></div>
+                <div class="absolute bottom-10 right-10 w-[400px] h-[300px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto">
+                
+                <!-- Cabeçalho da Seção -->
+                <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-blue-200 font-heading font-semibold text-xs uppercase tracking-widest mb-6 shadow-sm backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse" aria-hidden="true"></span>
+                        Transparência Inegociável
+                    </div>
+
+                    <h2 id="caixa-de-vidro-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-white tracking-tight leading-[1.2] mb-6">
+                        Cuidamos do seu equipamento com o <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-white to-blue-200 underline decoration-primary decoration-4 underline-offset-8">respeito que você merece.</span>
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                        Ninguém planeja ficar sem o computador, seja no trabalho ou nos estudos. Quando o imprevisto acontece, você precisa de clareza e de alguém em quem confiar. Por isso, você acompanha cada etapa do cuidado com a sua máquina, de ponta a ponta.
+                    </p>
+                </div>
+
+                <!-- Timeline / Grid dos 4 Passos -->
+                <div class="relative">
+                    <!-- Linha Conectora Decorativa para Desktop -->
+                    <div class="hidden lg:block absolute top-1/2 left-8 right-8 -translate-y-8 h-0.5 bg-gradient-to-r from-primary/30 via-blue-500/40 to-emerald-500/30 z-0 pointer-events-none" aria-hidden="true"></div>
+
+                    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10 list-none p-0 m-0">
+                        
+                        <!-- PASSO 1: Check-in Cuidadoso -->
+                        <li class="group relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/10 hover:border-primary/60 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-primary">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/30 border border-primary/60 flex items-center justify-center text-blue-300 font-heading font-black text-lg group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-inner">
+                                        01
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                                        Fotos de Entrada
+                                    </span>
+                                </div>
+
+                                <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-blue-300 mb-5 group-hover:border-primary/40 group-hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-xl font-bold font-heading text-white mb-3 group-hover:text-blue-200 transition-colors">
+                                    Check-in Cuidadoso
+                                </h3>
+
+                                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                                    Assim que seu equipamento chega, registramos cada detalhe e acessório com fotos, garantindo a sua tranquilidade.
+                                </p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-slate-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                Registro fotográfico do estado físico
+                            </div>
+                        </li>
+
+                        <!-- PASSO 2: Diagnóstico Claro -->
+                        <li class="group relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/10 hover:border-primary/60 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-primary">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/30 border border-primary/60 flex items-center justify-center text-blue-300 font-heading font-black text-lg group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-inner">
+                                        02
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                        Laudo Visual
+                                    </span>
+                                </div>
+
+                                <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-blue-300 mb-5 group-hover:border-primary/40 group-hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-xl font-bold font-heading text-white mb-3 group-hover:text-blue-200 transition-colors">
+                                    Diagnóstico Claro
+                                </h3>
+
+                                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                                    Explicamos o que aconteceu de forma simples e visual (via foto ou vídeo), para que você entenda e aprove o reparo com total segurança.
+                                </p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-slate-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                                Sem jargões e sem surpresas
+                            </div>
+                        </li>
+
+                        <!-- PASSO 3: Reparo Acompanhado -->
+                        <li class="group relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/10 hover:border-accent/60 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-accent">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-12 h-12 rounded-2xl bg-accent/20 border border-accent/60 flex items-center justify-center text-orange-300 font-heading font-black text-lg group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-300 shadow-inner">
+                                        03
+                                    </div>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                        Via WhatsApp
+                                    </span>
+                                </div>
+
+                                <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-orange-300 mb-5 group-hover:border-accent/40 group-hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-xl font-bold font-heading text-white mb-3 group-hover:text-orange-200 transition-colors">
+                                    Reparo Acompanhado
+                                </h3>
+
+                                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                                    Sem sumiços. Você recebe atualizações diretas no WhatsApp enquanto trabalhamos na sua máquina.
+                                </p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-slate-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                                Atualizações em tempo real
+                            </div>
+                        </li>
+
+                        <!-- PASSO 4: Testes de Qualidade -->
+                        <li class="group relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/10 hover:border-emerald-500/60 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/60 flex items-center justify-center text-emerald-300 font-heading font-black text-lg group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-inner">
+                                        04
+                                    </div>
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                                        Vídeo de Entrega
+                                    </span>
+                                </div>
+
+                                <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-emerald-300 mb-5 group-hover:border-emerald-500/40 group-hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-xl font-bold font-heading text-white mb-3 group-hover:text-emerald-200 transition-colors">
+                                    Testes de Qualidade
+                                </h3>
+
+                                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                                    Antes de devolver, enviamos um vídeo comprovando que tudo está funcionando perfeitamente, pronto para sua rotina voltar ao normal.
+                                </p>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-slate-400">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                Garantia e laudo de conformidade
+                            </div>
+                        </li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. SEÇÃO: SERVIÇOS FÍSICOS E LOGÍSTICA -->
+        <section id="servicos-fisicos-logistica" class="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-950/95 border-t border-white/10 overflow-hidden" aria-labelledby="servicos-fisicos-heading">
+            
+            <!-- Glow Decorativo de Fundo -->
+            <div class="absolute inset-0 pointer-events-none select-none z-0" aria-hidden="true">
+                <div class="absolute top-1/2 left-10 w-[500px] h-[350px] bg-accent/10 rounded-full blur-[140px]"></div>
+                <div class="absolute bottom-1/4 right-10 w-[500px] h-[350px] bg-primary/20 rounded-full blur-[140px]"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto">
+                
+                <!-- Cabeçalho da Seção -->
+                <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 font-heading font-semibold text-xs uppercase tracking-widest mb-6 shadow-sm backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+                        Laboratório Físico no RJ & Comodidade
+                    </div>
+
+                    <h2 id="servicos-fisicos-heading" class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-white tracking-tight leading-[1.2] mb-6">
+                        Facilidade para você <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-accent to-amber-300">não precisar pausar o seu dia.</span>
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                        Infraestrutura avançada de bancada, logística porta a porta e consultoria especializada para quem não pode perder tempo.
+                    </p>
+                </div>
+
+                <!-- Cards dos 3 Serviços -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    
+                    <!-- CARD 1: Reparo e Sobrevida -->
+                    <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 hover:bg-slate-900/80 backdrop-blur-2xl border border-white/10 hover:border-blue-400/50 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-primary">
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-primary/30 border border-primary/60 flex items-center justify-center text-blue-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                                    Bancada Técnica
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-heading text-white mb-4 group-hover:text-blue-300 transition-colors">
+                                Reparo e Sobrevida
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                Mais velocidade e durabilidade para sua máquina atual, feito por especialistas com peças de qualidade e garantia.
+                            </p>
+
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Upgrades rápidos de SSD NVMe e Memória RAM</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Troca de telas, baterias, teclados e dobradiças</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Higienização térmica profunda e troca de pasta térmica</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5 text-blue-300">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                                Diagnóstico prévio com laudo
+                            </span>
+                            <span class="text-slate-400">Garantia em peças</span>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2: Leva & Traz Seguro (Destaque Central) -->
+                    <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/70 hover:bg-slate-900/90 backdrop-blur-2xl border-2 border-accent/40 hover:border-accent shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-accent">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white font-heading font-bold text-xs uppercase tracking-wider shadow-md">
+                            Mais Escolhido no RJ
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-8 mt-2">
+                                <div class="w-14 h-14 rounded-2xl bg-accent/20 border border-accent/50 flex items-center justify-center text-orange-300 group-hover:bg-accent group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4zM4 17h1.05a2.5 2.5 0 002.45-2H16a2.5 2.5 0 002.45 2H19a2 2 0 002-2v-4a2 2 0 00-.59-1.41l-3-3A2 2 0 0016 6h-3V4a1 1 0 00-1-1H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-500/10 text-orange-300 border border-orange-500/20">
+                                    Coleta & Entrega
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-heading text-white mb-4 group-hover:text-orange-300 transition-colors">
+                                Leva & Traz Seguro
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                No meio da urgência e da correria, você não precisa se deslocar. Nós retiramos e devolvemos seu equipamento no conforto da sua casa.
+                            </p>
+
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Protocolo de custódia e lacre de segurança no ato</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Cobertura em bairros da Zona Sul, Barra, Centro e Tijuca</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Agendamento flexível direto pelo WhatsApp</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5 text-orange-300">
+                                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                                Rastreamento de rota
+                            </span>
+                            <span class="text-slate-400">100% Protegido</span>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3: Montagem de PCs Customizados -->
+                    <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 hover:bg-slate-900/80 backdrop-blur-2xl border border-white/10 hover:border-purple-400/50 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(168,85,247,0.25)]">
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/50 flex items-center justify-center text-purple-300 group-hover:bg-purple-600 group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                    Workstations & Games
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-heading text-white mb-4 group-hover:text-purple-300 transition-colors">
+                                Montagem de PCs Customizados
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                Entendemos a sua necessidade e montamos a máquina ideal para o seu objetivo, de estações de trabalho a setups de alto desempenho.
+                            </p>
+
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Dimensionamento balanceado (Zero gargalo de hardware)</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Cable management cirúrgico e otimização de fluxo de ar</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Testes de estresse, estabilidade térmica e benchmarks</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5 text-purple-300">
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                Consultoria de compra
+                            </span>
+                            <span class="text-slate-400">Entrega montado & testado</span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- CTA DA SEÇÃO B2C -->
+                <div class="flex flex-col items-center justify-center text-center p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/15 backdrop-blur-xl shadow-glass">
+                    <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-3">
+                        Pronto para recuperar o desempenho e a estabilidade do seu computador?
+                    </h3>
+                    
+                    <p class="text-sm sm:text-base text-slate-300 max-w-xl mb-8 font-normal">
+                        Fale com nossa equipe técnica, receba uma estimativa transparente ou solicite a retirada no seu endereço.
+                    </p>
+
+                    <button 
+                        type="button" 
+                        onclick="openTriagemModal('B2C')"
+                        class="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl bg-accent hover:bg-accentDark text-white font-heading font-bold text-base sm:text-lg shadow-glow-accent border border-accent/50 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        aria-label="Solicitar Atendimento para Uso Pessoal"
+                    >
+                        <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
+                        <span class="relative z-10">Solicitar Atendimento</span>
+                        <svg class="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <div class="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-400 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                            Triagem rápida em 1 minuto
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                            Sem custos ocultos
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                            Atendimento humano no RJ
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- HUB B2B: SOLUÇÕES CORPORATIVAS, SERVICE DESK & INFRA                      -->
+    <!-- ========================================================================= -->
+    <div id="hub-b2b" class="w-full relative overflow-hidden transition-opacity duration-500">
+        
+        <section id="solucoes-b2b" class="relative py-24 sm:py-32 bg-slate-950 overflow-hidden border-t border-white/10" aria-labelledby="b2b-heading">
+            <!-- Efeitos de Iluminação Ambiente -->
+            <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary/20 blur-[130px] rounded-full mix-blend-screen" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[300px] bg-accent/15 blur-[120px] rounded-full mix-blend-screen" aria-hidden="true"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Header da Seção B2B -->
+                <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/15 border border-accent/30 text-orange-300 font-bold text-xs uppercase tracking-widest mb-6 backdrop-blur-md shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+                        <span>Hub Corporativo · Soluções B2B</span>
+                    </div>
+
+                    <h2 id="b2b-heading" class="font-heading font-black text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.2] mb-6">
+                        A base silenciosa para o crescimento do <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-accent to-amber-400 underline decoration-accent/60 decoration-4 underline-offset-8">seu negócio</span>.
+                    </h2>
+
+                    <p class="text-slate-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed">
+                        Sabemos que a melhor TI é aquela que você não precisa lembrar que existe, porque tudo simplesmente funciona. Estamos aqui para garantir que sua equipe foque no que importa, enquanto nós cuidamos da estabilidade da sua operação.
+                    </p>
+                </div>
+
+                <!-- 3 CARDS DE DESTAQUE CORPORATIVO -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+                    
+                    <!-- CARD 1: Service Desk Acolhedor -->
+                    <article class="group relative bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-primary/60 rounded-3xl p-8 sm:p-10 shadow-glass flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(26,78,102,0.25)]">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" aria-hidden="true"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-primary/30 border border-primary/50 flex items-center justify-center text-blue-300 shadow-inner group-hover:scale-110 group-hover:bg-primary/40 transition-transform duration-300">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829M12 12a3 3 0 100-6 3 3 0 000 6z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 18v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+                                    </svg>
+                                </div>
+                                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">Suporte N1 · N2 · N3</span>
+                            </div>
+
+                            <h3 class="font-heading font-bold text-2xl text-white mb-4 group-hover:text-blue-300 transition-colors">
+                                Service Desk Acolhedor
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                                Suporte sempre disponível para ajudar sua equipe com agilidade e paciência, sem jargões confusos.
+                            </p>
+
+                            <ul class="space-y-3 mb-6 pt-4 border-t border-white/5 text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Atendimento remoto e presencial ágil</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Resolução humanizada e sem linguagem inacessível</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Escalonamento técnico transparente e documentado</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Mais produtividade para sua equipe
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2: Gestão Preventiva -->
+                    <article class="group relative bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-accent/60 rounded-3xl p-8 sm:p-10 shadow-glass flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(204,85,0,0.25)]">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" aria-hidden="true"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-accent/30 border border-accent/50 flex items-center justify-center text-orange-300 shadow-inner group-hover:scale-110 group-hover:bg-accent/40 transition-transform duration-300">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-orange-500/10 text-orange-300 border border-orange-500/20">Saúde do Parque</span>
+                            </div>
+
+                            <h3 class="font-heading font-bold text-2xl text-white mb-4 group-hover:text-orange-300 transition-colors">
+                                Gestão Preventiva
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                                Cuidamos da saúde do seu parque tecnológico com manutenções preventivas, evitando imprevistos antes que aconteçam.
+                            </p>
+
+                            <ul class="space-y-3 mb-6 pt-4 border-t border-white/5 text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Limpeza técnica física e otimização de SO</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Monitoramento de saúde de discos, RAM e térmicas</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Ciclo de vida de hardware e planejamento de upgrades</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <span class="text-xs font-semibold text-accent uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Prevenção ativa contra paradas
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3: Segurança e Organização -->
+                    <article class="group relative bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-blue-400/60 rounded-3xl p-8 sm:p-10 shadow-glass flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(59,130,246,0.25)]">
+                        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl" aria-hidden="true"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-blue-500/30 border border-blue-400/50 flex items-center justify-center text-blue-200 shadow-inner group-hover:scale-110 group-hover:bg-blue-500/40 transition-transform duration-300">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.75 5.25A2.25 2.25 0 017.5 4.5h9a2.25 2.25 0 011.75.75l1.6 2.5a4.5 4.5 0 01.9 2.7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-400/10 text-blue-300 border border-blue-400/20">Proteção & Infra</span>
+                            </div>
+
+                            <h3 class="font-heading font-bold text-2xl text-white mb-4 group-hover:text-blue-300 transition-colors">
+                                Segurança e Organização
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                                Um ambiente digital estruturado e protegido, zelando pelo bem mais valioso da sua empresa: suas informações.
+                            </p>
+
+                            <ul class="space-y-3 mb-6 pt-4 border-t border-white/5 text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Rotinas de backup automatizado e redundante (3-2-1)</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Proteção de endpoint, firewall e isolamento de rede</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Organização de racks, cabeamento estruturado e switches</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <span class="text-xs font-semibold text-blue-300 uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Continuidade e blindagem de dados
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- MÉTRICAS DE CONFIABILIDADE -->
+                <div class="bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950/90 border border-white/10 rounded-3xl p-8 sm:p-12 mb-16 shadow-2xl backdrop-blur-2xl">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Confiabilidade & Padrão de Engenharia</span>
+                        <h3 class="font-heading font-bold text-2xl sm:text-3xl text-white">
+                            Métricas e Garantias que Protegem sua Operação
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="font-heading font-black text-3xl text-white mb-1">99.9%</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">Zero Downtime Focus</div>
+                            <p class="text-xs text-slate-400 leading-relaxed">Rotinas proativas para eliminar quedas de servidores e estações em horário de pico.</p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-xl bg-accent/20 text-orange-400 border border-accent/30 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <div class="font-heading font-black text-3xl text-white mb-1">SLA Formal</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-orange-400 mb-2">Garantido em Contrato</div>
+                            <p class="text-xs text-slate-400 leading-relaxed">Tempo de resposta prioritário e resolução estruturada por níveis de criticidade.</p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-xl bg-primary/30 text-blue-300 border border-primary/50 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            </div>
+                            <div class="font-heading font-black text-3xl text-white mb-1">Consultoria</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-blue-300 mb-2">Infraestrutura & Racks</div>
+                            <p class="text-xs text-slate-400 leading-relaxed">Projetos de cabeamento Cat6/Fibra, identificação de portas e organização de TI.</p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all text-center flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <div class="font-heading font-black text-3xl text-white mb-1">Inventário</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-purple-300 mb-2">Gestão de Ativos</div>
+                            <p class="text-xs text-slate-400 leading-relaxed">Relatórios transparentes de máquinas, licenças e saúde do parque empresarial.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BANNER DE CONVERSÃO CORPORATIVO B2B -->
+                <div class="relative rounded-3xl bg-gradient-to-r from-primaryDark via-primary to-slate-900 border border-white/15 p-8 sm:p-12 lg:p-16 shadow-2xl overflow-hidden text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="pointer-events-none absolute -right-20 -top-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl" aria-hidden="true"></div>
+                    
+                    <div class="max-w-2xl relative z-10">
+                        <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-accent text-white mb-4 shadow-sm">
+                            Atendimento Especializado RJ
+                        </span>
+                        <h3 class="font-heading font-black text-2xl sm:text-3xl md:text-4xl text-white mb-4 leading-tight">
+                            Pronto para blindar a infraestrutura e o suporte da sua empresa?
+                        </h3>
+                        <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                            Inicie uma cotação personalizada sem compromisso através do nosso assistente de triagem inteligente ou fale diretamente com um especialista técnico.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto shrink-0">
+                        <button 
+                            type="button" 
+                            onclick="openTriagemModal('B2B')"
+                            class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accentDark text-white font-bold text-sm sm:text-base rounded-2xl shadow-glow-accent border border-accent/50 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                            aria-label="Abrir formulário de cotação corporativa B2B"
+                        >
+                            <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
+                            <span class="relative z-10">Solicitar Cotação B2B</span>
+                            <svg class="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+
+                        <a 
+                            href="https://wa.me/5521999428989?text=Olá%2C%20gostaria%20de%20solicitar%20uma%20cotação%20corporativa%20B2B%20para%20minha%20empresa." 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-semibold text-sm sm:text-base rounded-2xl backdrop-blur-md border border-white/20 hover:border-white/30 transition-all duration-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                        >
+                            <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+                            </svg>
+                            <span>WhatsApp Corporativo</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- FOOTER INSTITUCIONAL TECH PREVENT                                         -->
+    <!-- ========================================================================= -->
+    <footer id="contato" class="bg-slate-950 border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 relative z-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Coluna 1: Marca & Propósito -->
+            <div class="md:col-span-2 space-y-4">
+                <picture>
+                    <source srcset="logo1.webp" type="image/webp">
+                    <img src="logo1.png" alt="Tech Prevent" class="h-9 w-auto brightness-0 invert">
+                </picture>
+                <p class="text-sm text-slate-400 max-w-md leading-relaxed">
+                    Referência em Engenharia e Suporte de TI no Rio de Janeiro. Transparência técnica na manutenção de computadores com a Metodologia Caixa de Vidro e Gestão Preventiva de TI para Empresas.
+                </p>
+                <div class="flex items-center gap-3 text-xs text-slate-400 pt-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Laboratório Físico & Atendimento em Todo o RJ</span>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Modalidades de Atendimento -->
+            <div class="space-y-3">
+                <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Nossos Serviços</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+                    <li><a href="#metodologia-caixa-de-vidro" onclick="setMode('B2C')" class="hover:text-blue-400 transition-colors">Metodologia Caixa de Vidro</a></li>
+                    <li><a href="#servicos-fisicos-logistica" onclick="setMode('B2C')" class="hover:text-blue-400 transition-colors">Sistema Leva & Traz Seguro</a></li>
+                    <li><a href="#servicos-fisicos-logistica" onclick="setMode('B2C')" class="hover:text-blue-400 transition-colors">Montagem de PCs Custom</a></li>
+                    <li><a href="#solucoes-b2b" onclick="setMode('B2B')" class="hover:text-accent transition-colors">Service Desk N1/N2/N3 B2B</a></li>
+                    <li><a href="#solucoes-b2b" onclick="setMode('B2B')" class="hover:text-accent transition-colors">Infraestrutura e Redes</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Contato Rápido & Atendimento -->
+            <div class="space-y-3">
+                <h4 class="font-heading font-bold text-sm uppercase tracking-wider text-white">Atendimento Direto</h4>
+                <div class="space-y-2 text-xs sm:text-sm text-slate-400">
+                    <p class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span class="max-w-[200px]">Rua São Francisco Xavier, 32<br>sala 303 - RJ</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.97.54 1.772.814 2.796.814 3.179 0 5.766-2.587 5.766-5.766 0-3.18-2.587-5.766-5.766-5.766zm9.969 5.766c0 5.49-4.479 9.969-9.969 9.969-1.748 0-3.385-.453-4.819-1.246l-5.212 1.369 1.393-5.086c-.887-1.488-1.393-3.218-1.393-5.006 0-5.49 4.48-9.969 9.969-9.969 5.491 0 9.969 4.479 9.969 9.969z"/></svg>
+                        <span>(21) 99942-8989</span>
+                    </p>
+                    <button type="button" onclick="openTriagemModal()" class="mt-3 inline-flex items-center gap-2 text-xs font-bold text-accent hover:text-orange-300 transition-colors uppercase tracking-wider cursor-pointer">
+                        <span>Iniciar Triagem Online</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>&copy; 2026 Tech Prevent. Todos os direitos reservados. Rio de Janeiro, Brasil.</p>
+            <p class="flex items-center gap-4">
+                <span>Metodologia Caixa de Vidro &trade;</span>
+                <span>Termos de Uso</span>
+                <span>Privacidade</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- MOTOR DE TRIAGEM INTELIGENTE (MODAL WIZARD MULTI-STEP)                    -->
+    <!-- ========================================================================= -->
+    <div id="triagem-modal" 
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="triagem-step-title">
+        
+        <!-- Overlay com Backdrop Blur -->
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity" 
+             onclick="closeTriagemModal()" 
+             aria-hidden="true"></div>
+
+        <!-- Glassmorphism Modal Card -->
+        <div class="relative w-full max-w-xl bg-slate-900 border border-white/15 rounded-3xl shadow-glass overflow-hidden z-10 flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300"
+             id="triagem-card">
+            
+            <!-- Header do Modal: Progresso e Fechar -->
+            <div class="p-6 pb-4 border-b border-white/10 flex items-center justify-between gap-4 bg-slate-900/80 backdrop-blur-md">
+                <!-- Botão Voltar (aparece a partir do passo 2) -->
+                <button id="btn-wizard-back" 
+                        onclick="prevWizardStep()" 
+                        class="hidden items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-all focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
+                        aria-label="Voltar ao passo anterior">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Voltar</span>
+                </button>
+
+                <!-- Indicador de Passo e Barra -->
+                <div class="flex-1 flex flex-col gap-1.5" id="wizard-progress-container">
+                    <div class="flex justify-between items-center text-xs font-heading font-semibold">
+                        <span class="text-accent uppercase tracking-wider" id="wizard-step-label">Passo 1 de 4</span>
+                        <span class="text-slate-400" id="wizard-step-percent">25%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                        <div id="wizard-progress-bar" 
+                             class="bg-gradient-to-r from-secondary to-accent h-full w-1/4 transition-all duration-300 ease-out"></div>
+                    </div>
+                </div>
+
+                <!-- Botão Fechar (X) -->
+                <button onclick="closeTriagemModal()" 
+                        class="w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-accent ml-2 cursor-pointer"
+                        aria-label="Fechar janela de triagem">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Corpo Dinâmico dos Passos -->
+            <div class="p-6 sm:p-8 overflow-y-auto custom-scroll flex-1 relative min-h-[360px]" id="wizard-body">
+                
+                <!-- ================= PASSO 1 ================= -->
+                <div id="step-1" class="space-y-6">
+                    <div class="space-y-2 text-center sm:text-left">
+                        <span class="text-xs font-semibold font-heading uppercase text-blue-400 tracking-wider">Direcionamento Inicial</span>
+                        <h2 id="triagem-step-title" class="text-xl sm:text-2xl font-bold font-heading text-white">
+                            Para podermos direcionar o especialista ideal, você busca ajuda para:
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Card Opção: B2B -->
+                        <button type="button" 
+                                onclick="selectFunnel('B2B')" 
+                                class="wizard-option group text-left p-5 rounded-2xl bg-slate-800/60 hover:bg-slate-800 border border-white/10 hover:border-accent/60 transition-all duration-200 flex flex-col justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
+                                data-value="B2B">
+                            <div class="w-12 h-12 rounded-xl bg-orange-950/40 border border-orange-500/20 flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-accent transition-colors">Minha Empresa</h3>
+                                <p class="text-xs text-slate-400 mt-1">TI Corporativa, Help Desk, Infraestrutura e Servidores.</p>
+                            </div>
+                            <div class="flex items-center text-xs font-semibold text-accent gap-1 pt-1">
+                                <span>Selecionar perfil</span>
+                                <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </button>
+
+                        <!-- Card Opção: B2C -->
+                        <button type="button" 
+                                onclick="selectFunnel('B2C')" 
+                                class="wizard-option group text-left p-5 rounded-2xl bg-slate-800/60 hover:bg-slate-800 border border-white/10 hover:border-blue-400/60 transition-all duration-200 flex flex-col justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer"
+                                data-value="B2C">
+                            <div class="w-12 h-12 rounded-xl bg-blue-950/40 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-white group-hover:text-blue-400 transition-colors">Meu Equipamento Pessoal</h3>
+                                <p class="text-xs text-slate-400 mt-1">Reparo de Notebook, Desktop, PC Gamer e Upgrades.</p>
+                            </div>
+                            <div class="flex items-center text-xs font-semibold text-blue-400 gap-1 pt-1">
+                                <span>Selecionar perfil</span>
+                                <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================= PASSO 2 (DINÂMICO) ================= -->
+                <div id="step-2" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold font-heading uppercase text-accent tracking-wider" id="step-2-badge">Diagnóstico da Demanda</span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-heading text-white" id="step-2-title">
+                            <!-- Inserido dinamicamente via JS -->
+                        </h2>
+                    </div>
+
+                    <div class="space-y-3" id="step-2-options">
+                        <!-- Opções injetadas via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- ================= PASSO 3 (DINÂMICO) ================= -->
+                <div id="step-3" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold font-heading uppercase text-accent tracking-wider" id="step-3-badge">Dimensão & Especificação</span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-heading text-white" id="step-3-title">
+                            <!-- Inserido dinamicamente via JS -->
+                        </h2>
+                    </div>
+
+                    <div class="space-y-3" id="step-3-options">
+                        <!-- Opções injetadas via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- ================= PASSO 4 (FECHAMENTO & CONTATO) ================= -->
+                <div id="step-4" class="hidden space-y-6">
+                    <div class="space-y-2 text-center">
+                        <span class="text-xs font-semibold font-heading uppercase text-emerald-400 tracking-wider">Última Etapa</span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-heading text-white">
+                            Tudo pronto!
+                        </h2>
+                        <p class="text-sm text-slate-400 mt-2">
+                            Já entendemos o que você precisa. Clique no botão abaixo para enviar suas respostas diretamente para o nosso WhatsApp e iniciar o atendimento.
+                        </p>
+                    </div>
+
+                    <!-- CTA Final de Ação -->
+                    <div class="pt-4">
+                        <button type="button" 
+                                onclick="finishWizardAndSend()" 
+                                class="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#128C7E] text-white font-heading font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_25px_rgba(37,211,102,0.6)] hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3 group cursor-pointer">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.782 5.767-.005 1.018.264 2.014.777 2.89L6.5 16.5l1.731-.527c.846.471 1.802.719 2.781.72h.015c3.18 0 5.767-2.586 5.781-5.766-.015-3.18-2.602-5.755-5.777-5.755zm3.172 8.167c-.15.422-.862.812-1.189.851-.314.038-.724.116-2.456-.6-2.083-.863-3.414-2.981-3.517-3.118-.105-.138-.838-1.115-.838-2.128 0-1.014.526-1.51.716-1.721.19-.211.413-.264.55-.264.137 0 .274.004.398.01.133.007.31-.051.485.371.187.452.637 1.554.693 1.666.056.113.094.245.019.395-.075.151-.113.245-.226.358-.113.113-.238.254-.34.349-.113.104-.23.217-.101.442.129.226.575.952 1.233 1.541.851.761 1.564.996 1.782 1.109.219.113.344.094.472-.056.129-.151.555-.641.704-.863.15-.221.3-.183.504-.108.204.075 1.29.608 1.512.721.222.113.37.165.424.259.054.094.054.542-.096.964zM12 2C6.477 2 2 6.477 2 12c0 1.76.452 3.42 1.252 4.88L2 22l5.291-1.169A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+                            <span>Falar no WhatsApp</span>
+                        </button>
+                        <p class="text-center text-[11px] text-slate-500 mt-3">
+                            Seus dados estão protegidos. Atendimento humano e sem spam.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
     <!-- CORE JAVASCRIPT LOGIC (State Machine & Smooth Animations)                 -->
     <!-- ========================================================================= -->
     <script>
-        // Dados Oficiais do COPYWRITING.md e DESIGN.md
+        // Dados Oficiais do COPY_DECK.md e DESIGN.md
         const funnelData = {
             B2C: {
                 eyebrow: "Para Meu Uso Pessoal",
@@ -274,10 +1195,10 @@
                 title: 'Reparo de Computadores com <span class="text-blue-400 underline decoration-4 underline-offset-8">100% de Transparência</span>.',
                 subtitle: 'Conheça a metodologia "Caixa de Vidro". Acompanhe cada etapa do conserto do seu equipamento, via whatsapp.',
                 ctaPrimary: "Solicitar Diagnóstico Agora",
-                ctaPrimaryLink: "https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20para%20meu%20computador.",
+                ctaPrimaryAction: "openTriagemModal('B2C')",
                 ctaPrimaryClass: "bg-primary hover:bg-primaryDark text-white shadow-glow-primary border-primary/50",
                 ctaSecondary: "Como funciona o Reparo?",
-                ctaSecondaryLink: "#metodologia",
+                ctaSecondaryLink: "#metodologia-caixa-de-vidro",
                 socialProofs: [
                     "Laboratório Físico Avançado no RJ",
                     "Sistema Leva & Traz Exclusivo"
@@ -291,10 +1212,10 @@
                 title: 'TI Corporativa com Escalabilidade e <span class="text-accent underline decoration-4 underline-offset-8">Segurança</span>.',
                 subtitle: 'Da infraestrutura de redes ao Service Desk completo. Prevenimos problemas antes que eles parem a sua operação.',
                 ctaPrimary: "Realize sua cotação",
-                ctaPrimaryLink: "https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20para%20minha%20empresa.",
+                ctaPrimaryAction: "openTriagemModal('B2B')",
                 ctaPrimaryClass: "bg-accent hover:bg-accentDark text-white shadow-glow-accent border-accent/50",
                 ctaSecondary: "Falar com um Especialista",
-                ctaSecondaryLink: "https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20Tech%20Prevent.",
+                ctaSecondaryLink: "https://wa.me/5521999428989?text=Olá%2C%20gostaria%20de%20falar%20com%20um%20especialista%20Tech%20Prevent.",
                 socialProofs: [
                     "Gestão de Ativos & Segurança de Dados",
                     "Suporte Preventivo N1, N2 e N3"
@@ -303,8 +1224,70 @@
             }
         };
 
+        // Dados oficiais do Wizard de Triagem (COPY_DECK Seção 4)
+        const TRIAGEM_CONFIG = {
+            whatsappNumber: '5521999428989',
+            B2B: {
+                step2: {
+                    badge: 'Diagnóstico Corporativo',
+                    title: 'Entendido. Qual o principal desafio da sua operação hoje?',
+                    options: [
+                        { label: 'Suporte diário para a equipe (Help Desk)', desc: 'Atendimento ágil para destravar o time no dia a dia.' },
+                        { label: 'Estruturação e Projetos (Redes, Wi-Fi, Cabeamento)', desc: 'Infraestrutura veloz e organizada para o escritório.' },
+                        { label: 'Segurança, Servidores e Backup de Dados', desc: 'Proteção contra perdas de dados e invasões.' },
+                        { label: 'Outros / Preciso de uma consultoria', desc: 'Diagnóstico técnico personalizado para a empresa.' }
+                    ]
+                },
+                step3: {
+                    badge: 'Tamanho da Operação',
+                    title: 'Qual o tamanho aproximado da sua equipe atualmente?',
+                    options: [
+                        { label: '1 a 5 pessoas', desc: 'Pequena operação ou escritório compacto.' },
+                        { label: '6 a 20 pessoas', desc: 'Média equipe com demandas frequentes de suporte.' },
+                        { label: 'Mais de 20 pessoas', desc: 'Operação robusta que exige SLA e alta disponibilidade.' }
+                    ]
+                }
+            },
+            B2C: {
+                step2: {
+                    badge: 'Diagnóstico Pessoal',
+                    title: 'Entendido. Como podemos ajudar a retomar sua rotina hoje?',
+                    options: [
+                        { label: 'Meu computador/notebook não liga ou tem defeito físico.', desc: 'Tela preta, placa danificada, barulhos ou danos por queda/líquido.' },
+                        { label: 'Meu equipamento está muito lento ou travando.', desc: 'Demora para abrir programas, travamentos constantes ou superaquecimento.' },
+                        { label: 'Quero fazer um upgrade de peças (Mais velocidade).', desc: 'Troca de SSD, expansão de memória RAM ou melhoria de performance.' },
+                        { label: 'Quero montar uma máquina nova, do zero.', desc: 'Consultoria e montagem personalizada para trabalho, estudo ou games.' }
+                    ]
+                },
+                step3: {
+                    badge: 'Tipo de Equipamento',
+                    title: 'Qual é o tipo de equipamento?',
+                    options: [
+                        { label: 'Notebook', desc: 'Portátil (todas as marcas e modelos).' },
+                        { label: 'Computador de Mesa (Desktop)', desc: 'Gabinete padrão para trabalho ou estudo.' },
+                        { label: 'PC Gamer', desc: 'Máquina dedicada a alto desempenho e jogos.' },
+                        { label: 'Outro', desc: 'Monitores, periféricos ou estações especiais.' }
+                    ]
+                }
+            }
+        };
+
         let currentMode = 'B2C';
         let isTransitioning = false;
+
+        // Estado do Wizard
+        const wizardState = {
+            currentStep: 1,
+            funnel: 'B2C',
+            answers: {
+                funnel: '',
+                desafio: '',
+                especificacao: '',
+                continuidade: 'Quero levar até o laboratório físico (RJ).',
+                nome: '',
+                whatsapp: ''
+            }
+        };
 
         // Renderiza o template HTML do conteudo da Hero
         function renderHeroTemplate(data) {
@@ -330,21 +1313,20 @@
 
                 <!-- CTAs com Micro-interacao e Shimmer -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                    <!-- Botao Primario -->
-                    <a href="${data.ctaPrimaryLink}" target="_blank" rel="noopener noreferrer" 
-                       class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 ${data.ctaPrimaryClass} font-bold text-sm sm:text-base rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] border overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
-                        <!-- Efeito Shimmer Passante -->
+                    <!-- Botao Primario: Aciona o Motor de Triagem -->
+                    <button type="button" onclick="${data.ctaPrimaryAction}" 
+                       class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 ${data.ctaPrimaryClass} font-bold text-sm sm:text-base rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] border overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer">
                         <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
                         
                         <span class="relative z-10">${data.ctaPrimary}</span>
                         <svg class="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
-                    </a>
+                    </button>
 
                     <!-- Botao Secundario -->
                     <a href="${data.ctaSecondaryLink}" ${secondaryTargetAttr}
-                       class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-semibold text-sm sm:text-base rounded-2xl backdrop-blur-md border border-white/20 hover:border-white/30 transition-all duration-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50">
+                       class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-semibold text-sm sm:text-base rounded-2xl backdrop-blur-md border border-white/20 hover:border-white/30 transition-all duration-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 cursor-pointer">
                         ${data.ctaSecondary}
                     </a>
                 </div>
@@ -377,26 +1359,32 @@
             const bgB2C = document.getElementById('bg-b2c');
             const bgB2B = document.getElementById('bg-b2b');
             const glow = document.getElementById('hero-accent-glow');
+            const hubB2C = document.getElementById('hub-b2c');
+            const hubB2B = document.getElementById('hub-b2b');
 
             // 1. Animacao do Glider e Botoes
             if (mode === 'B2C') {
                 glider.style.transform = 'translate3d(0, 0, 0)';
                 glider.style.backgroundColor = '#FFFFFF';
                 glider.style.boxShadow = '0 4px 16px rgba(0,0,0,0.35)';
-                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400';
-                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent';
+                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer';
+                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer';
                 btnB2C.setAttribute('aria-selected', 'true');
                 btnB2B.setAttribute('aria-selected', 'false');
 
                 bgB2B.style.opacity = '0';
                 bgB2C.style.opacity = '1';
                 glow.className = 'absolute inset-0 bg-blue-900/10 mix-blend-screen transition-colors duration-700';
+
+                // Priorização visual dos Hubs
+                hubB2C.classList.remove('opacity-40');
+                hubB2C.classList.add('opacity-100');
             } else {
                 glider.style.transform = 'translate3d(100%, 0, 0)';
                 glider.style.backgroundColor = '#CC5500';
                 glider.style.boxShadow = '0 4px 20px rgba(204, 85, 0, 0.45)';
-                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent';
-                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400';
+                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer';
+                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer';
                 btnB2B.setAttribute('aria-selected', 'true');
                 btnB2C.setAttribute('aria-selected', 'false');
 
@@ -416,6 +1404,14 @@
                 content.classList.add('content-enter');
                 isTransitioning = false;
             }, 150);
+        }
+
+        // Rolagem suave para seção
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Navbar Dynamic Morphing ao Scrollar
@@ -450,6 +1446,172 @@
             mobileBtn?.setAttribute('aria-expanded', String(isExpanded));
         }
         mobileBtn?.addEventListener('click', toggleMobileMenu);
+
+        // =========================================================================
+        // WIZARD / MOTOR DE TRIAGEM INTELIGENTE LOGIC
+        // =========================================================================
+        const modalEl = document.getElementById('triagem-modal');
+        const cardEl = document.getElementById('triagem-card');
+        const btnBackEl = document.getElementById('btn-wizard-back');
+        const stepLabelEl = document.getElementById('wizard-step-label');
+        const stepPercentEl = document.getElementById('wizard-step-percent');
+        const progressBarEl = document.getElementById('wizard-progress-bar');
+
+        function openTriagemModal(initialFunnel) {
+            document.body.classList.add('overflow-hidden');
+            modalEl.classList.remove('opacity-0', 'pointer-events-none');
+            cardEl.classList.remove('scale-95');
+            cardEl.classList.add('scale-100');
+
+            if (initialFunnel && (initialFunnel === 'B2B' || initialFunnel === 'B2C')) {
+                selectFunnel(initialFunnel);
+            } else {
+                goToStep(1);
+            }
+        }
+
+        function closeTriagemModal() {
+            modalEl.classList.add('opacity-0', 'pointer-events-none');
+            cardEl.classList.remove('scale-100');
+            cardEl.classList.add('scale-95');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Fechar com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modalEl.classList.contains('pointer-events-none')) {
+                closeTriagemModal();
+            }
+        });
+
+        function selectFunnel(funnelType) {
+            wizardState.funnel = funnelType;
+            wizardState.answers.funnel = funnelType === 'B2B' ? 'Minha Empresa (TI Corporativa)' : 'Meu Equipamento Pessoal (B2C)';
+            
+            renderDynamicStep(2);
+            renderDynamicStep(3);
+            goToStep(2);
+        }
+
+        function saveAnswer(key, value) {
+            wizardState.answers[key] = value;
+        }
+
+        function renderDynamicStep(stepNumber) {
+            const config = TRIAGEM_CONFIG[wizardState.funnel];
+            if (stepNumber === 2) {
+                document.getElementById('step-2-badge').textContent = config.step2.badge;
+                document.getElementById('step-2-title').textContent = config.step2.title;
+                const container = document.getElementById('step-2-options');
+                container.innerHTML = '';
+
+                config.step2.options.forEach((opt) => {
+                    const isSelected = wizardState.answers.desafio === opt.label;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = `w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer ${
+                        isSelected 
+                        ? 'bg-accent/15 border-accent text-white shadow-glow-accent' 
+                        : 'bg-slate-800/60 hover:bg-slate-800 border-white/10 hover:border-white/25 text-slate-200'
+                    }`;
+                    btn.onclick = () => {
+                        saveAnswer('desafio', opt.label);
+                        goToStep(3);
+                    };
+                    btn.innerHTML = `
+                        <div>
+                            <div class="font-heading font-semibold text-sm text-white">${opt.label}</div>
+                            <div class="text-xs text-slate-400 mt-0.5">${opt.desc}</div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border ${isSelected ? 'border-accent bg-accent' : 'border-slate-600'} flex items-center justify-center flex-shrink-0">
+                            <svg class="w-3.5 h-3.5 text-white ${isSelected ? 'block' : 'hidden'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                    `;
+                    container.appendChild(btn);
+                });
+            } else if (stepNumber === 3) {
+                document.getElementById('step-3-badge').textContent = config.step3.badge;
+                document.getElementById('step-3-title').textContent = config.step3.title;
+                const container = document.getElementById('step-3-options');
+                container.innerHTML = '';
+
+                config.step3.options.forEach((opt) => {
+                    const isSelected = wizardState.answers.especificacao === opt.label;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = `w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer ${
+                        isSelected 
+                        ? 'bg-accent/15 border-accent text-white shadow-glow-accent' 
+                        : 'bg-slate-800/60 hover:bg-slate-800 border-white/10 hover:border-white/25 text-slate-200'
+                    }`;
+                    btn.onclick = () => {
+                        saveAnswer('especificacao', opt.label);
+                        goToStep(4);
+                    };
+                    btn.innerHTML = `
+                        <div>
+                            <div class="font-heading font-semibold text-sm text-white">${opt.label}</div>
+                            <div class="text-xs text-slate-400 mt-0.5">${opt.desc}</div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border ${isSelected ? 'border-accent bg-accent' : 'border-slate-600'} flex items-center justify-center flex-shrink-0">
+                            <svg class="w-3.5 h-3.5 text-white ${isSelected ? 'block' : 'hidden'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                    `;
+                    container.appendChild(btn);
+                });
+            }
+        }
+
+        function goToStep(step) {
+            wizardState.currentStep = step;
+
+            stepLabelEl.textContent = `Passo ${step} de 4`;
+            const percentages = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+            stepPercentEl.textContent = percentages[step];
+            progressBarEl.style.width = percentages[step];
+
+            if (step > 1) {
+                btnBackEl.classList.remove('hidden');
+                btnBackEl.classList.add('inline-flex');
+            } else {
+                btnBackEl.classList.add('hidden');
+                btnBackEl.classList.remove('inline-flex');
+            }
+
+            [1, 2, 3, 4].forEach(s => {
+                const el = document.getElementById(`step-${s}`);
+                if (s === step) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+        }
+
+        function prevWizardStep() {
+            if (wizardState.currentStep > 1) {
+                goToStep(wizardState.currentStep - 1);
+            }
+        }
+
+        function finishWizardAndSend() {
+            const mensagem = `Olá, Tech Prevent! Gostaria de atendimento especializado:
+
+🏢 *Perfil:* ${wizardState.answers.funnel}
+⚠️ *Desafio/Necessidade:* ${wizardState.answers.desafio || 'Não especificado'}
+💻 *Especificação/Equipamento:* ${wizardState.answers.especificacao || 'Não especificado'}`;
+
+            const encodedMessage = encodeURIComponent(mensagem);
+            const waUrl = `https://wa.me/${TRIAGEM_CONFIG.whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+            closeTriagemModal();
+        }
 
         // Inicializacao no DOM Ready
         document.addEventListener('DOMContentLoaded', () => {
