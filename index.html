@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Prevent | A Solução Definitiva em TI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1A4E66',
+                        primaryDark: '#0D2D3D',
+                        secondary: '#3B82F6',
+                        accent: '#CC5500',
+                        accentDark: '#A34300',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0; }
+        @keyframes fadeIn { 
+            0% { opacity: 0; transform: translateY(10px); } 
+            100% { opacity: 1; transform: translateY(0); } 
+        }
+        .crossfade-out { opacity: 0; transform: translateY(-10px); transition: all 0.3s ease; }
+        .crossfade-in { opacity: 1; transform: translateY(0); transition: all 0.5s ease 0.1s; }
+    </style>
+</head>
+<body class="bg-slate-900 text-[#0F172A] font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar Dynamic Glassmorphism (Vercel/Apple Standard) -->
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] py-6 bg-transparent border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center cursor-pointer transition-transform hover:opacity-80">
+                <img src="logo1.png" alt="Tech Prevent Logo" class="h-10 w-auto brightness-0 invert drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            </div>
+            
+            <ul class="hidden md:flex items-center gap-8 text-sm font-bold text-white tracking-wide drop-shadow-md">
+                <li><a href="#" class="hover:text-blue-400 transition-colors">Início</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Para Empresas</a></li>
+                <li><a href="#" class="hover:text-blue-400 transition-colors">Laboratório (B2C)</a></li>
+                <li><a href="#" class="hover:text-white/70 transition-colors">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+        
+        <!-- Backgrounds -->
+        <img id="bg-b2c" src="b2c_img.jpg" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 ease-in-out z-0">
+        <img id="bg-b2b" src="b2b_img.jpg" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out z-0">
+        
+        <!-- Overlay Reduzido: Apenas o suficiente para amarrar, sem esconder as fotos -->
+        <div id="hero-overlay" class="absolute inset-0 bg-slate-900/30 transition-colors duration-1000 z-10"></div>
+
+        <!-- Container do Conteúdo Centrado -->
+        <div class="relative z-20 w-full max-w-5xl mx-auto px-6 flex flex-col items-center mt-12 pb-12">
+            
+            <!-- 🌟 THE GLASSMORPHISM CARD 🌟 -->
+            <div class="w-full bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-3xl p-8 md:p-14 flex flex-col items-center text-center transition-all duration-500 hover:border-white/20">
+                
+                <!-- Segmented Control (Toggle Pill) -->
+                <div class="bg-black/40 p-1.5 rounded-full mb-10 flex items-center gap-1 border border-white/10 shadow-inner">
+                    <button id="btn-b2c" onclick="setMode('B2C')" class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-white text-slate-900 shadow-md">
+                        Para Uso Pessoal
+                    </button>
+                    <button id="btn-b2b" onclick="setMode('B2B')" class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-white hover:bg-white/10">
+                        Para Empresas (B2B)
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="hero-content" class="w-full fade-in">
+                    <!-- B2C Inicial -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white font-bold text-xs uppercase tracking-widest mb-6 border border-white/20 shadow-sm">
+                        Laboratório Físico
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-6 drop-shadow-md">
+                        Reparo de Computadores com <span class="text-blue-400 underline decoration-4 underline-offset-4">100% de Transparência</span>.
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-3xl mx-auto font-medium">
+                        Conheça a metodologia "Caixa de Vidro". Acompanhe cada etapa do conserto do seu equipamento, via whatsapp.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primaryDark text-white font-bold rounded-xl shadow-xl transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2 border border-primary/50">
+                            Solicitar Diagnóstico Agora
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                    <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm font-bold text-blue-200 opacity-90">
+                        <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Laboratório Físico Avançado no RJ</div>
+                        <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Sistema Leva & Traz Exclusivo</div>
+                    </div>
+                </div>
+
+            </div> <!-- Fim Glassmorphism Card -->
+            
+        </div>
+    </main>
+
+    <div style="height: 1000px; background: linear-gradient(to bottom, #0F172A, #1E293B);"></div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.remove('bg-transparent', 'border-transparent', 'py-6');
+                nav.classList.add('bg-black/60', 'backdrop-blur-md', 'backdrop-saturate-150', 'border-white/10', 'py-3', 'shadow-xl');
+            } else {
+                nav.classList.add('bg-transparent', 'border-transparent', 'py-6');
+                nav.classList.remove('bg-black/60', 'backdrop-blur-md', 'backdrop-saturate-150', 'border-white/10', 'py-3', 'shadow-xl');
+            }
+        });
+
+        const contentB2C = `
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white font-bold text-xs uppercase tracking-widest mb-6 border border-white/20 shadow-sm">
+                Laboratório Físico
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-6 drop-shadow-md">
+                Reparo de Computadores com <span class="text-blue-400 underline decoration-4 underline-offset-4">100% de Transparência</span>.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-3xl mx-auto font-medium">
+                Conheça a metodologia "Caixa de Vidro". Acompanhe cada etapa do conserto do seu equipamento, via whatsapp.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primaryDark text-white font-bold rounded-xl shadow-xl transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2 border border-primary/50">
+                    Solicitar Diagnóstico Agora
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm font-bold text-blue-200 opacity-90">
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Laboratório Físico Avançado no RJ</div>
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Sistema Leva & Traz Exclusivo</div>
+            </div>
+        `;
+
+        const contentB2B = `
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 text-white font-bold text-xs uppercase tracking-widest mb-6 border border-accent/40 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                Para o seu Negócio
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-black font-heading text-white leading-[1.1] mb-6 drop-shadow-md">
+                TI Corporativa com Escalabilidade e <span class="text-accent underline decoration-4 underline-offset-4">Segurança</span>.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-3xl mx-auto font-medium">
+                Da infraestrutura de redes ao Service Desk completo. Prevenimos problemas antes que eles parem a sua operação.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button class="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accentDark text-white font-bold rounded-xl shadow-[0_4px_24px_rgba(204,85,0,0.5)] transition-transform transform hover:-translate-y-1 flex items-center justify-center gap-2 border border-accent/50">
+                    Realize sua cotação
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm font-bold text-orange-200 opacity-90">
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Gestão de Ativos & Segurança de Dados</div>
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Suporte Preventivo N1, N2 e N3</div>
+            </div>
+        `;
+
+        let currentMode = 'B2C';
+
+        function setMode(mode) {
+            if (currentMode === mode) return;
+            currentMode = mode;
+
+            const btnB2C = document.getElementById('btn-b2c');
+            const btnB2B = document.getElementById('btn-b2b');
+            const content = document.getElementById('hero-content');
+            const bgB2C = document.getElementById('bg-b2c');
+            const bgB2B = document.getElementById('bg-b2b');
+
+            content.classList.remove('fade-in');
+            content.classList.add('crossfade-out');
+
+            setTimeout(() => {
+                if (mode === 'B2C') {
+                    btnB2C.className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-white text-slate-900 shadow-md";
+                    btnB2B.className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-white hover:bg-white/10";
+                    content.innerHTML = contentB2C;
+                    
+                    bgB2B.style.opacity = '0';
+                    bgB2C.style.opacity = '1';
+                } 
+                else if (mode === 'B2B') {
+                    btnB2B.className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-accent text-white shadow-md";
+                    btnB2C.className = "px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-white hover:bg-white/10";
+                    content.innerHTML = contentB2B;
+                    
+                    bgB2C.style.opacity = '0';
+                    bgB2B.style.opacity = '1';
+                }
+
+                content.classList.remove('crossfade-out');
+                content.classList.add('fade-in');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
