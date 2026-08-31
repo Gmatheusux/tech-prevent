@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Prevent | Soluções em T.I.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1A4E66',
+                        primaryDark: '#0D2D3D',
+                        accent: '#CC5500',
+                        accentDark: '#A34300',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-surface text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1A4E66" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M12 8v8"/><path d="M8 12h8"/>
+                </svg>
+                <div class="flex flex-col leading-none">
+                    <span class="text-xl font-black text-primary tracking-tight">TECH PREVENT</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Soluções em T.I.</span>
+                </div>
+            </div>
+
+            <!-- Global Switcher B2B / B2C -->
+            <div class="hidden md:flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+                <button id="btn-b2b" onclick="setMode('B2B')" class="px-6 py-2 rounded-lg text-sm font-bold transition-all bg-white shadow-sm text-primary">Para Empresas (B2B)</button>
+                <button id="btn-b2c" onclick="setMode('B2C')" class="px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800">Para Você (B2C)</button>
+            </div>
+
+            <!-- CTA -->
+            <button class="hidden md:flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primaryDark text-white font-bold rounded-lg transition-colors text-sm">
+                Área do Cliente
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white pt-20 pb-32 overflow-hidden border-b border-slate-200">
+        <!-- Background Pattern Decorator -->
+        <div class="absolute inset-0 z-0 opacity-[0.03]" style="background-image: radial-gradient(#1A4E66 2px, transparent 2px); background-size: 32px 32px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Texto Dinâmico -->
+            <div id="hero-content" class="fade-in max-w-2xl">
+                <!-- Content will be injected by JS -->
+            </div>
+
+            <!-- Imagem / Mockup Dinâmico -->
+            <div class="relative w-full h-[500px] bg-slate-100 rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex items-center justify-center">
+                <img id="hero-img" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Server Room" class="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-500">
+                
+                <!-- Overlay Card flutuante simulando a UX Caixa de vidro/Calculadora -->
+                <div id="floating-card" class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-200 fade-in">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS do Switcher (Lógica de Duplo Funil) -->
+    <script>
+        const contentB2B = `
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-bold text-sm mb-6 border border-accent/20">
+                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                Prevenção Corporativa Ativa
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black text-primary leading-[1.1] mb-6">
+                Quanto o <span class="text-accent underline decoration-4 underline-offset-4">downtime</span> custa para sua empresa?
+            </h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                Service Desk completo, gestão de inventário e infraestrutura blindada contra falhas. Transferimos o risco da sua operação de TI para nossa engenharia.
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+                <button class="px-8 py-4 bg-accent hover:bg-accentDark text-white font-bold rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5 flex items-center gap-2">
+                    Calcular Prejuízo de TI
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 hover:border-primary hover:text-primary font-bold rounded-xl transition-colors">
+                    Falar com Especialista
+                </button>
+            </div>
+            <div class="mt-10 flex items-center gap-6 text-sm font-bold text-slate-400">
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SLA Garantido</div>
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Inventário Ativo</div>
+            </div>
+        `;
+
+        const cardB2B = `
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+                        <svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Status do Servidor</p>
+                        <p class="font-bold text-slate-800">Monitoramento 24/7</p>
+                    </div>
+                </div>
+                <span class="text-emerald-500 font-bold bg-emerald-50 px-2 py-1 rounded">Seguro</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div class="bg-primary w-[100%] h-full"></div>
+            </div>
+        `;
+
+        const contentB2C = `
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 border border-primary/20">
+                <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Transparência Absoluta
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black text-primary leading-[1.1] mb-6">
+                O fim do medo na hora de consertar seu <span class="text-primary underline decoration-4 underline-offset-4">computador</span>.
+            </h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                Manutenção avançada com a metodologia <strong class="text-slate-800">Caixa de Vidro</strong>. Acompanhe cada etapa, sem laudos falsos e sem extorsão técnica. Coletamos na sua casa no Rio de Janeiro.
+            </p>
+            <div class="flex flex-wrap items-center gap-4">
+                <button class="px-8 py-4 bg-primary hover:bg-primaryDark text-white font-bold rounded-xl shadow-lg transition-transform transform hover:-translate-y-0.5 flex items-center gap-2">
+                    Solicitar Coleta (Leva & Traz)
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="mt-10 flex items-center gap-6 text-sm font-bold text-slate-400">
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Laboratório Próprio</div>
+                <div class="flex items-center gap-2"><svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Laudo em 4 Passos</div>
+            </div>
+        `;
+
+        const cardB2C = `
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-primary text-white flex flex-shrink-0 items-center justify-center font-black text-xl shadow-md">
+                    2
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800">Diagnóstico na Bancada</h3>
+                    <p class="text-sm text-slate-500 mt-1 leading-snug">Seu equipamento está sendo avaliado. Você receberá um laudo com foto das peças e o defeito exato antes da aprovação.</p>
+                </div>
+            </div>
+        `;
+
+        function setMode(mode) {
+            const btnB2B = document.getElementById('btn-b2b');
+            const btnB2C = document.getElementById('btn-b2c');
+            const content = document.getElementById('hero-content');
+            const card = document.getElementById('floating-card');
+            const img = document.getElementById('hero-img');
+
+            // Reset Animation
+            content.classList.remove('fade-in');
+            card.classList.remove('fade-in');
+            void content.offsetWidth; // trigger reflow
+            content.classList.add('fade-in');
+            card.classList.add('fade-in');
+
+            if (mode === 'B2B') {
+                btnB2B.className = 'px-6 py-2 rounded-lg text-sm font-bold transition-all bg-white shadow-sm text-primary';
+                btnB2C.className = 'px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800';
+                content.innerHTML = contentB2B;
+                card.innerHTML = cardB2B;
+                img.src = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"; // Server room
+            } else {
+                btnB2C.className = 'px-6 py-2 rounded-lg text-sm font-bold transition-all bg-white shadow-sm text-primary';
+                btnB2B.className = 'px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-800';
+                content.innerHTML = contentB2C;
+                card.innerHTML = cardB2C;
+                img.src = "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80"; // Tech bench / PC
+            }
+        }
+
+        // Initialize B2B
+        document.addEventListener('DOMContentLoaded', () => setMode('B2B'));
+    </script>
+</body>
+</html>

@@ -39,11 +39,7 @@ Este documento contém o conteúdo textual (copy) oficial de todas as telas e fl
   - **Gestão Preventiva:** Cuidamos da saúde do seu parque tecnológico com manutenções preventivas, evitando imprevistos antes que aconteçam.
   - **Segurança e Organização:** Um ambiente digital estruturado e protegido, zelando pelo bem mais valioso da sua empresa: suas informações.
 
-### Sessão da Calculadora (Impacto e Produtividade)
-- **Título (H2):** O impacto real dos imprevistos na sua rotina.
-- **Texto da Calculadora:** Quedas de sistema e falhas técnicas geram frustração e travam o fluxo de trabalho da sua equipe. Use nosso simulador para entender como o investimento em estabilidade se traduz em horas produtivas salvas.
-- **Resultado (Exemplo):** "Um suporte de TI estável pode poupar até X horas de retrabalho e estresse da sua equipe mensalmente."
-- **CTA Pós-Cálculo:** Agendar um Bate-Papo Consultivo
+
 
 ---
 

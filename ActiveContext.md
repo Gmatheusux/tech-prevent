@@ -4,7 +4,7 @@
 - **Arquitetura de Duplo Funil (B2B vs B2C)** definida e aprovada.
 - **Ecossistema SPA:** A Home atuará com um Switcher Global (estado) para alterar instantaneamente todo o contexto (textos, CTAs, dores) dependendo da persona escolhida.
 - **Gatilhos de UX e Ferramentas Interativas:**
-  - B2B: Implementação de uma Calculadora de Downtime/Prejuízo e foco em redução de risco financeiro.
+  - B2B: Foco em redução de risco financeiro, segurança e estabilidade (Prevenção e Service Desk).
   - B2C: Implementação da Metodologia "Caixa de Vidro" (4 passos para combater o medo de extorsão) e roteamento de logística segura.
 - **Motor de Triagem Inteligente:** Um Wizard multi-step global substitui o contato passivo genérico.
 - O mapeamento visual e as decisões foram registradas.
@@ -13,7 +13,7 @@
 - [ ] **Módulo Global:** Motor de Triagem Inteligente (Wizard Multi-Step)
 - [ ] **Tela 1:** Home SPA (Hero Switcher B2B/B2C dinâmico)
 - [ ] **Tela 2:** Hub B2C (Metodologia Caixa de Vidro, Bancada, Logística)
-- [ ] **Tela 3:** Hub B2B (Calculadora de Prejuízo, Infra/Racks, Contrato Preventivo)
+- [ ] **Tela 3:** Hub B2B (Soluções Corporativas, Infra/Racks, Contrato Preventivo)
 - [ ] **Tela 4:** Laboratório Físico & Transparência Técnica
 
 ## Decisões Estratégicas & Negócio Consolidadas
