@@ -128,18 +128,18 @@
                 <a href="#contato" class="hover:text-white/70 transition-colors py-1">Contato</a>
             </nav>
 
-            <!-- CTA Direto na Navbar -->
+            <!-- CTA Direto na Navbar: Ajustado para "WhatsApp" -->
             <div class="hidden sm:flex items-center gap-4">
                 <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/40 shadow-sm transition-all duration-200 active:scale-95 overflow-hidden">
-                    <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"></span>
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="relative z-10">WhatsApp Plantão</span>
+                    <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+                    <span class="relative z-10">WhatsApp</span>
                 </a>
             </div>
 
             <!-- Mobile Menu Toggle Button -->
-            <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent" aria-label="Abrir Menu de Navegação">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Abrir Menu de Navegação">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
             </button>
         </div>
 
@@ -173,8 +173,8 @@
             </picture>
 
             <!-- Overlay de Vinheta e Contraste (Isola ruído visual) -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/70"></div>
-            <div id="hero-accent-glow" class="absolute inset-0 bg-blue-900/10 mix-blend-screen transition-colors duration-700"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/70" aria-hidden="true"></div>
+            <div id="hero-accent-glow" class="absolute inset-0 bg-blue-900/10 mix-blend-screen transition-colors duration-700" aria-hidden="true"></div>
         </div>
 
         <!-- Container do Card Centralizado -->
@@ -237,7 +237,7 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-primary/40 border border-primary flex items-center justify-center text-blue-300 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white text-lg mb-2">Metodologia Caixa de Vidro</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Transparência total com fotos, vídeos e status em tempo real de cada etapa do serviço.</p>
@@ -245,7 +245,7 @@
 
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-accent/30 border border-accent flex items-center justify-center text-orange-300 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white text-lg mb-2">Service Desk & Infra B2B</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Rotinas preventivas N1/N2/N3, inventário de ativos e cabeamento de alta performance.</p>
@@ -253,7 +253,7 @@
 
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-blue-500/30 border border-blue-400 flex items-center justify-center text-blue-300 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white text-lg mb-2">Sistema Leva & Traz Exclusivo</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Coleta e entrega segura do seu equipamento em qualquer bairro do Rio de Janeiro.</p>
@@ -308,10 +308,13 @@
 
         // Renderiza o template HTML do conteudo da Hero
         function renderHeroTemplate(data) {
+            const isExternalSecondary = data.ctaSecondaryLink.startsWith('http');
+            const secondaryTargetAttr = isExternalSecondary ? 'target="_blank" rel="noopener noreferrer"' : '';
+
             return `
                 <!-- Eyebrow Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${data.badgeClass} font-bold text-xs uppercase tracking-widest mb-6 border shadow-sm backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full ${currentMode === 'B2B' ? 'bg-accent' : 'bg-blue-400'} animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full ${currentMode === 'B2B' ? 'bg-accent' : 'bg-blue-400'} animate-pulse" aria-hidden="true"></span>
                     ${data.eyebrowBadge}
                 </div>
 
@@ -329,19 +332,19 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                     <!-- Botao Primario -->
                     <a href="${data.ctaPrimaryLink}" target="_blank" rel="noopener noreferrer" 
-                       class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 ${data.ctaPrimaryClass} font-bold text-sm sm:text-base rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] border overflow-hidden">
+                       class="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 ${data.ctaPrimaryClass} font-bold text-sm sm:text-base rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] border overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
                         <!-- Efeito Shimmer Passante -->
                         <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
                         
                         <span class="relative z-10">${data.ctaPrimary}</span>
-                        <svg class="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
 
                     <!-- Botao Secundario -->
-                    <a href="${data.ctaSecondaryLink}" 
-                       class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-semibold text-sm sm:text-base rounded-2xl backdrop-blur-md border border-white/20 hover:border-white/30 transition-all duration-200 active:scale-[0.98]">
+                    <a href="${data.ctaSecondaryLink}" ${secondaryTargetAttr}
+                       class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white font-semibold text-sm sm:text-base rounded-2xl backdrop-blur-md border border-white/20 hover:border-white/30 transition-all duration-200 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50">
                         ${data.ctaSecondary}
                     </a>
                 </div>
@@ -349,18 +352,18 @@
                 <!-- Badges de Prova Social & Confianca -->
                 <div class="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm font-semibold ${data.socialColor} opacity-90">
                     <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
                         <span>${data.socialProofs[0]}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
                         <span>${data.socialProofs[1]}</span>
                     </div>
                 </div>
             `;
         }
 
-        // Funcao de troca suave de modo (Dual Funnel Switcher)
+        // Funcao de troca suave de modo (Dual Funnel Switcher com Preservacao de Foco WCAG)
         function setMode(mode) {
             if (currentMode === mode && document.getElementById('hero-content').children.length > 0) return;
             if (isTransitioning) return;
@@ -380,8 +383,8 @@
                 glider.style.transform = 'translate3d(0, 0, 0)';
                 glider.style.backgroundColor = '#FFFFFF';
                 glider.style.boxShadow = '0 4px 16px rgba(0,0,0,0.35)';
-                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none';
-                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none';
+                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400';
+                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent';
                 btnB2C.setAttribute('aria-selected', 'true');
                 btnB2B.setAttribute('aria-selected', 'false');
 
@@ -392,8 +395,8 @@
                 glider.style.transform = 'translate3d(100%, 0, 0)';
                 glider.style.backgroundColor = '#CC5500';
                 glider.style.boxShadow = '0 4px 20px rgba(204, 85, 0, 0.45)';
-                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white focus:outline-none';
-                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none';
+                btnB2B.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent';
+                btnB2C.className = 'relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400';
                 btnB2B.setAttribute('aria-selected', 'true');
                 btnB2C.setAttribute('aria-selected', 'false');
 
@@ -439,11 +442,12 @@
             }
         }, { passive: true });
 
-        // Mobile Menu
+        // Mobile Menu com Acessibilidade ARIA
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
+            const isExpanded = mobileMenu.classList.toggle('hidden') === false;
+            mobileBtn?.setAttribute('aria-expanded', String(isExpanded));
         }
         mobileBtn?.addEventListener('click', toggleMobileMenu);
 
