@@ -66,9 +66,11 @@
         /* Animação de entrada do conteúdo */
         .content-enter {
             animation: contentFadeIn 0.35s var(--ease-fluid) forwards;
+            will-change: transform, opacity;
         }
         .content-exit {
             animation: contentFadeOut 0.15s ease-in forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes contentFadeIn {
@@ -145,10 +147,9 @@
 
             <!-- CTA Direto na Navbar -->
             <div class="hidden sm:flex items-center gap-4">
-                <button type="button" onclick="openTriagemModal()" class="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-emerald-500/20 hover:bg-emerald-500/30 backdrop-blur-md border border-emerald-500/40 hover:border-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-200 active:scale-95 overflow-hidden cursor-pointer">
+                <button type="button" onclick="openTriagemModal()" class="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accentDark backdrop-blur-md border border-accent/20 hover:border-accent/40 shadow-glow-accent transition-all duration-200 active:scale-95 overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
                     <span class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" aria-hidden="true"></span>
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
-                    <span class="relative z-10 text-emerald-50">Triagem Inteligente</span>
+                    <span class="relative z-10 text-white">Triagem Inteligente</span>
                 </button>
             </div>
 
@@ -159,20 +160,27 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-6 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 space-y-3">
-            <button type="button" onclick="setMode('B2C'); scrollToSection('hub-b2c'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-white hover:bg-white/10">Para Uso Pessoal (B2C)</button>
-            <button type="button" onclick="setMode('B2B'); scrollToSection('hub-b2b'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-accent hover:bg-white/10">Para Empresas (B2B)</button>
-            <button type="button" onclick="openTriagemModal(); toggleMobileMenu();" class="block w-full text-center px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accentDark transition-colors">
+        <div id="mobile-menu" class="hidden md:hidden px-4 py-4 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 space-y-3">
+            <button type="button" onclick="setMode('B2C'); scrollToSection('hub-b2c'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">Para Uso Pessoal (B2C)</button>
+            <button type="button" onclick="setMode('B2B'); scrollToSection('hub-b2b'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-accent hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">Para Empresas (B2B)</button>
+            <button type="button" onclick="openTriagemModal(); toggleMobileMenu();" class="block w-full text-center px-4 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accentDark transition-colors shadow-glow-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
                 Iniciar Triagem Inteligente
             </button>
         </div>
     </header>
 
     <!-- ========================================================================= -->
+    <!-- MAIN CONTENT WRAPPER                                                      -->
+    <!-- ========================================================================= -->
+    <main id="main-content">
+
+    <!-- ========================================================================= -->
     <!-- HERO SECTION (Dual Funnel SPA Core)                                       -->
     <!-- ========================================================================= -->
-    <main id="hero" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 lg:py-0">
+    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-16">
         
+        <h1 class="sr-only">Tech Prevent - Suporte Especializado e Gestão de TI no Rio de Janeiro</h1>
+
         <!-- Camadas de Background Fotográfico em WebP com GPU Crossfade Puro -->
         <div class="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
             <!-- Background B2C (Laboratório Físico & Transparência) -->
@@ -201,54 +209,47 @@
                 <!-- ============================================================= -->
                 <!-- SEGMENTED CONTROL / DUAL FUNNEL TOGGLE (Fluid GPU Glider)     -->
                 <!-- ============================================================= -->
-                <div class="relative flex items-center p-1.5 bg-black/50 backdrop-blur-md rounded-full mb-8 sm:mb-10 border border-white/15 shadow-inner max-w-full overflow-hidden" role="tablist" aria-label="Seleção de Modalidade de Atendimento">
+                <div class="relative flex items-center p-1.5 bg-black/50 backdrop-blur-md rounded-full mb-8 sm:mb-10 border border-white/15 shadow-inner max-w-full overflow-hidden" aria-label="Seleção de Modalidade de Atendimento">
                     
-                    <!-- Glider Deslizante Fluido (Hardware-Accelerated transform) -->
-                    <div id="segmented-glider" class="absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-6px)] rounded-full bg-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] pointer-events-none will-change-gpu" style="transform: translate3d(0, 0, 0);" aria-hidden="true"></div>
+                    <!-- Glider Animado (Highlight Background) -->
+                    <div id="segmented-glider" class="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full bg-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] pointer-events-none z-0"></div>
 
-                    <!-- Botão 1: B2C -->
                     <button 
-                        id="btn-b2c" 
                         type="button" 
-                        role="tab"
-                        aria-selected="true"
-                        aria-controls="hero-content"
-                        onclick="setMode('B2C')" 
+                        id="btn-b2c"
+                        onclick="setMode('B2C')"
                         class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+                        aria-selected="true"
                     >
-                        Para Uso Pessoal
+                        Para Você (B2C)
                     </button>
 
-                    <!-- Botão 2: B2B -->
                     <button 
-                        id="btn-b2b" 
                         type="button" 
-                        role="tab"
-                        aria-selected="false"
-                        aria-controls="hero-content"
-                        onclick="setMode('B2B')" 
+                        id="btn-b2b"
+                        onclick="setMode('B2B')"
                         class="relative z-10 px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-colors duration-300 text-white/80 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+                        aria-selected="false"
                     >
-                        Para Minha Empresa
+                        Para Empresas (B2B)
                     </button>
                 </div>
 
-                <!-- ============================================================= -->
-                <!-- ÁREA DE CONTEÚDO (Transições Assíncronas Sem Layout Shift)     -->
-                <!-- ============================================================= -->
-                <div id="hero-content" class="w-full min-h-[300px] flex flex-col items-center justify-center content-enter" role="tabpanel">
+                <!-- Conteúdo Dinâmico Injetado pelo JS -->
+                <div id="hero-content" class="w-full min-h-[300px] flex flex-col items-center justify-center content-enter">
                     <!-- O conteúdo dinâmico é injetado e gerenciado via JS -->
                 </div>
 
             </div> <!-- Fim Glassmorphism Card -->
 
         </div>
-    </main>
+    </section>
 
     <!-- ========================================================================= -->
     <!-- BARRA DE FEATURES RÁPIDAS & AUTORIDADE NO RJ                             -->
     <!-- ========================================================================= -->
-    <section class="relative z-20 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section aria-labelledby="features-heading" class="relative z-20 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+        <h2 id="features-heading" class="sr-only">Diferenciais e Autoridade</h2>
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:-translate-y-1">
                 <div class="w-10 h-10 rounded-xl bg-primary/40 border border-primary flex items-center justify-center text-blue-300 mb-4">
@@ -946,6 +947,8 @@
 
     </div>
 
+    </main>
+
     <!-- ========================================================================= -->
     <!-- FOOTER INSTITUCIONAL TECH PREVENT                                         -->
     <!-- ========================================================================= -->
@@ -1282,10 +1285,7 @@
             answers: {
                 funnel: '',
                 desafio: '',
-                especificacao: '',
-                continuidade: 'Quero levar até o laboratório físico (RJ).',
-                nome: '',
-                whatsapp: ''
+                especificacao: ''
             }
         };
 
@@ -1397,13 +1397,14 @@
             content.classList.remove('content-enter');
             content.classList.add('content-exit');
 
-            // 3. Atualizacao e Entrada
-            setTimeout(() => {
+            // 3. Atualizacao e Entrada sincronizada com a GPU
+            content.addEventListener('animationend', function onEnd() {
+                content.removeEventListener('animationend', onEnd);
                 content.innerHTML = renderHeroTemplate(funnelData[mode]);
                 content.classList.remove('content-exit');
                 content.classList.add('content-enter');
                 isTransitioning = false;
-            }, 150);
+            }, { once: true });
         }
 
         // Rolagem suave para seção
@@ -1422,10 +1423,10 @@
         function updateNavbar() {
             if (window.scrollY > 20) {
                 header.classList.remove('bg-transparent', 'border-transparent', 'py-5');
-                header.classList.add('bg-slate-950/80', 'backdrop-blur-xl', 'border-white/10', 'py-3.5', 'shadow-2xl');
+                header.classList.add('bg-black/60', 'backdrop-blur-md', 'border-white/10', 'py-3.5', 'shadow-2xl');
             } else {
                 header.classList.add('bg-transparent', 'border-transparent', 'py-5');
-                header.classList.remove('bg-slate-950/80', 'backdrop-blur-xl', 'border-white/10', 'py-3.5', 'shadow-2xl');
+                header.classList.remove('bg-black/60', 'backdrop-blur-md', 'border-white/10', 'py-3.5', 'shadow-2xl');
             }
             ticking = false;
         }
@@ -1457,7 +1458,13 @@
         const stepPercentEl = document.getElementById('wizard-step-percent');
         const progressBarEl = document.getElementById('wizard-progress-bar');
 
+        let lastActiveElement = null;
+
         function openTriagemModal(initialFunnel) {
+            lastActiveElement = document.activeElement;
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+
             document.body.classList.add('overflow-hidden');
             modalEl.classList.remove('opacity-0', 'pointer-events-none');
             cardEl.classList.remove('scale-95');
@@ -1468,19 +1475,47 @@
             } else {
                 goToStep(1);
             }
+            
+            // Foco para acessibilidade
+            setTimeout(() => {
+                const closeBtn = document.getElementById('btn-close-modal');
+                if (closeBtn) closeBtn.focus();
+            }, 50);
         }
 
         function closeTriagemModal() {
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) mainContent.removeAttribute('aria-hidden');
+
             modalEl.classList.add('opacity-0', 'pointer-events-none');
             cardEl.classList.remove('scale-100');
             cardEl.classList.add('scale-95');
             document.body.classList.remove('overflow-hidden');
+
+            if (lastActiveElement) lastActiveElement.focus();
         }
 
-        // Fechar com ESC
+        // Fechar com ESC e Focus Trap
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modalEl.classList.contains('pointer-events-none')) {
+            const isModalOpen = !modalEl.classList.contains('pointer-events-none');
+            if (!isModalOpen) return;
+
+            if (e.key === 'Escape') {
                 closeTriagemModal();
+            }
+
+            if (e.key === 'Tab') {
+                const focusableElements = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
             }
         });
 
@@ -1580,6 +1615,15 @@
             } else {
                 btnBackEl.classList.add('hidden');
                 btnBackEl.classList.remove('inline-flex');
+                
+                // Marca a opção previamente selecionada visualmente
+                document.querySelectorAll('#step-1 .wizard-option').forEach(btn => {
+                    if (btn.getAttribute('data-value') === wizardState.funnel) {
+                        btn.classList.add('ring-2', 'bg-slate-800', wizardState.funnel === 'B2B' ? 'ring-accent' : 'ring-blue-400');
+                    } else {
+                        btn.classList.remove('ring-2', 'bg-slate-800', 'ring-accent', 'ring-blue-400');
+                    }
+                });
             }
 
             [1, 2, 3, 4].forEach(s => {
