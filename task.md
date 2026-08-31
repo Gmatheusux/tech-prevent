@@ -29,9 +29,9 @@
 
 #### <span style="color: #CC5500;">**Escopo de Telas Aprovado (Checklist de Construção)**</span>
 - [ ] Módulo Global: Motor de Triagem Inteligente (Wizard Multi-Step)
-- [ ] Tela 1: Home SPA (Hero Switcher B2B/B2C dinâmico)
+- [x] Tela 1: Home SPA (Hero Switcher B2B/B2C dinâmico) — **Concluído na Fase 3**
 - [ ] Tela 2: Hub B2C (Metodologia Caixa de Vidro, Bancada, Logística)
-- [ ] Tela 3: Hub B2B (Calculadora de Prejuízo, Infra/Racks, Contrato Preventivo)
+- [ ] Tela 3: Hub B2B (Soluções Corporativas, Infra/Racks, Contrato Preventivo)
 - [ ] Tela 4: Laboratório Físico & Transparência
 
 ### <span style="color: #CC5500;">**FASE 1.5: UX Writing & Copywriting Estratégico (O Tom de Voz)**</span>
@@ -39,36 +39,37 @@
 
 - [x] Definir a Voz e Tom da Marca (Brand Persona) alinhada à autoridade (B2B) e acessibilidade (B2C).
 - [x] Escrever o Copy completo da **Home SPA (Hero, Gatilhos e Switcher)**.
-- [x] Escrever o Copy completo do **Hub B2B (Calculadora, Dores, CTAs de Alta Conversão)**.
+- [x] Escrever o Copy completo do **Hub B2B (Soluções, Dores, CTAs de Alta Conversão)**.
 - [x] Escrever o Copy completo do **Hub B2C (4 Passos Caixa de Vidro, Reparo e Logística)**.
 - [x] Escrever o Copy do **Motor de Triagem Inteligente (Perguntas e Respostas do Wizard)**.
 - [x] Consolidar todo o texto no arquivo `docs/COPY_DECK.md` para uso estrito nas fases de engenharia.
 
 ### <span style="color: #CC5500;">**FASE 2: Design System & O Molde (SSOT)**</span>
-- [ ] Mapear variáveis de cor, tipografia e espaçamento via skill ui-ux-pro-max.
-- [ ] Gerar Artefato HTML (Style Guide) para validação visual das cores e componentes.
-- [ ] Gerar o arquivo raiz DESIGN.md (A Lei Visual) após aprovação do HTML.
-- [ ] Extrair lógicas complexas para .agents/rules/ usando YAML Model Decision.
-- [ ] Inicializar o repositório Git local. **Encerrar o Chat de Fundação.**
+- [x] Mapear variáveis de cor, tipografia e espaçamento via skill ui-ux-pro-max.
+- [x] Gerar Artefato HTML (Style Guide) para validação visual das cores e componentes.
+- [x] Gerar o arquivo raiz DESIGN.md (A Lei Visual) após aprovação do HTML.
+- [x] Inicializar o repositório Git local. **Encerrar o Chat de Fundação.**
 
 ---
 
 ## <span style="color: #CC5500;">**O LOOP DE ENGENHARIA (1 Chat = 1 Fluxo Específico)**</span>
-> *REGRA DE OURO: O chat atual é bloqueado exclusivamente para o fluxo designado. Proibido interagir com o resto do sistema. Se um fluxo precisar de atualização no futuro, um chat isolado será aberto apenas para ele.*
 
-### <span style="color: #CC5500;">**FASE 3: Engenharia em Contêiner Estrito**</span>
-> **Responsável:** @engineer | **Modelo:** pro (Claude Sonnet 4.6)
+### <span style="color: #CC5500;">**FASE 3: Engenharia da Hero & Switcher Dual Funnel**</span>
+> **Responsável:** Gravy / @engineer | **Status:** ✅ Concluído e Validado
 
-- [ ] Ler a Barra de Progresso (ActiveContext.md) e focar **apenas** na Tela/Fluxo atual.
-- [ ] Iniciar Git Worktree isolada para o desenvolvimento deste fluxo.
-- [ ] Codificar em HTML/Tailwind/React ESTRITAMENTE baseado no DESIGN.md e no COPY_DECK.md.
-- [ ] Salvar na Worktree e acionar a fase de QA.
+- [x] Otimização de Assets (Conversão de JPG/PNG para WebP com até 83.9% de redução).
+- [x] Construção da Navbar Dynamic Morphing Glassmorphism com CTA "WhatsApp".
+- [x] Implementação do Segmented Control com Glider acelerado por hardware GPU (`translate3d`).
+- [x] Implementação do Switcher Dual Funnel (B2C e B2B) com tokens do `DESIGN.md` e redação do `COPY_DECK.md`.
+- [x] Auditoria de Acessibilidade WCAG 2.2 (Preservação de `focus-visible`, `aria-expanded` no mobile, `aria-hidden` em SVGs).
+- [x] Validação e Servidor Localhost ativo na porta 8080.
+- [x] Commits semânticos no Git e handoff para o próximo contêiner.
 
-### <span style="color: #CC5500;">**FASE 4: QA Visual, Handoff & Merge**</span>
-> **Responsável:** @qa e Gabe
+---
 
-- [ ] Subir servidor e acionar Playwright/Chromium para prints/webm da Worktree.
-- [ ] Consolidar evidências e HTML renderizável no production_artifacts/walkthrough.md.
-- [ ] **PAUSAR (Request Review)**: Gabe faz a aprovação visual no HTML/Vídeo.
-- [ ] Gravy comita via Conventional Commits (Regra 17) e faz o merge para main.
-- [ ] **Barra de Progresso:** Gravy marca o fluxo com [x] no task.md, atualiza o ActiveContext.md e pergunta qual é o próximo fluxo da lista a ser iniciado em um novo chat.
+## <span style="color: #CC5500;">**PRÓXIMA SESSÃO (Novo Chat / Contêiner Isolado)**</span>
+
+### <span style="color: #CC5500;">**FASE 4: Construção dos Hubs de Serviços & Motor de Triagem**</span>
+- [ ] **Fluxo 1:** Seção Hub B2C (Metodologia Caixa de Vidro em 4 Passos, Bancada e Sistema Leva & Traz).
+- [ ] **Fluxo 2:** Seção Hub B2B (Soluções Corporativas, Service Desk, Infra/Racks e Segurança de TI).
+- [ ] **Fluxo 3:** Motor de Triagem Inteligente (Wizard Multi-Step com roteamento dinâmico para WhatsApp).

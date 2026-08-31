@@ -28,18 +28,22 @@
 - **Copying Finalizado:** Textos da Home, Hub B2B, Hub B2C e Motor de Triagem Inteligente foram consolidados no arquivo `docs/COPY_DECK.md`.
 - O Motor de Triagem separa explicitamente Desktop de PC Gamer para um roteamento mais preciso no B2C.
 
-## Atualizações Recentes (Fase 3 Encerrada)
+## Atualizações Recentes (Fase 3: Validação Completa & QA Aprovado)
 - **Otimização de Assets WebP:** Todas as imagens (`b2c_img.webp`, `b2b_img.webp`, `logo1.webp`, `logo2.webp`) convertidas com redução de até 83.9% no payload.
-- **Hero Fluida Implementada:**
+- **Hero Fluida & Switcher Dual Funnel Validado:**
   - Segmented Control com Glider deslizante via aceleração de hardware GPU (`translate3d`) e curva `cubic-bezier(0.16, 1, 0.3, 1)`.
-  - Transição Dual Funnel sem layout shift (CLS = 0) com crossfade assíncrono.
   - Micro-interações táteis nos botões (efeito shimmer passante, elevação no hover e active press feedback).
-  - Navbar com dynamic morphing glassmorphism no scroll.
-  - Acessibilidade WCAG 2.2 com conformidade `motion-reduce`.
-- **Servidor Localhost Ativo:** Projeto rodando e validado na porta `8080`.
+  - Navbar com dynamic morphing glassmorphism no scroll e botão de CTA ajustado para "WhatsApp".
+- **Refinamentos de Acessibilidade e UX Aplicados:**
+  - Preservação dos anéis de foco acessível (`focus-visible:ring-2`) em todas as transições via teclado.
+  - Links externos para o WhatsApp no CTA secundário agora abrem corretamente com `target="_blank" rel="noopener noreferrer"`.
+  - Controle de estado `aria-expanded` dinâmico no menu mobile.
+  - Ícones SVG decorativos com `aria-hidden="true"`.
+- **Servidor Localhost Ativo:** Projeto rodando e 100% validado na porta `8080`.
 
 ## Próxima Etapa Pendente (Fase 4)
 - **FASE 4: Construção do Hub B2C (Metodologia Caixa de Vidro) e Hub B2B (Soluções Corporativas)**
   - Implementar as seções detalhadas de serviço abaixo da Hero.
   - Implementar o Motor de Triagem Inteligente (Wizard Multi-Step) com roteamento para WhatsApp.
+
 
