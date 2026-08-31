@@ -28,13 +28,18 @@
 - **Copying Finalizado:** Textos da Home, Hub B2B, Hub B2C e Motor de Triagem Inteligente foram consolidados no arquivo `docs/COPY_DECK.md`.
 - O Motor de Triagem separa explicitamente Desktop de PC Gamer para um roteamento mais preciso no B2C.
 
-## Próxima Etapa Pendente (Novo Chat — Fase 2)
-- **FASE 2: Design System & O Molde (SSOT)**
-  - O próximo chat (nova aba) assumirá a construção do Design System.
-  - **Diretriz Pré-aprovada para a Fase 2:** Utilizar o padrão "Trust & Authority" (Flat Design).
-  - **Cores Sugeridas:** Primária (#1E40AF - Azul Corporativo), Secundária (#3B82F6), Ação (#CC5500 - Laranja), Background (#F8FAFC), Foreground (#0F172A).
-  - **Tipografia:** Poppins (Headings) e Open Sans (Body).
-  - **Tarefas do próximo agente:**
-    1. Gerar o Artefato HTML (Style Guide) com essas variáveis para validação visual.
-    2. Após validação, gerar o arquivo raiz `DESIGN.md`.
-    3. Extrair lógicas complexas para `.agents/rules/` e inicializar o repositório Git local. Encerrar o ciclo de fundação.
+## Atualizações Recentes (Fase 3 Encerrada)
+- **Otimização de Assets WebP:** Todas as imagens (`b2c_img.webp`, `b2b_img.webp`, `logo1.webp`, `logo2.webp`) convertidas com redução de até 83.9% no payload.
+- **Hero Fluida Implementada:**
+  - Segmented Control com Glider deslizante via aceleração de hardware GPU (`translate3d`) e curva `cubic-bezier(0.16, 1, 0.3, 1)`.
+  - Transição Dual Funnel sem layout shift (CLS = 0) com crossfade assíncrono.
+  - Micro-interações táteis nos botões (efeito shimmer passante, elevação no hover e active press feedback).
+  - Navbar com dynamic morphing glassmorphism no scroll.
+  - Acessibilidade WCAG 2.2 com conformidade `motion-reduce`.
+- **Servidor Localhost Ativo:** Projeto rodando e validado na porta `8080`.
+
+## Próxima Etapa Pendente (Fase 4)
+- **FASE 4: Construção do Hub B2C (Metodologia Caixa de Vidro) e Hub B2B (Soluções Corporativas)**
+  - Implementar as seções detalhadas de serviço abaixo da Hero.
+  - Implementar o Motor de Triagem Inteligente (Wizard Multi-Step) com roteamento para WhatsApp.
+
