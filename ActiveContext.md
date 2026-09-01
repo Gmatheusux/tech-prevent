@@ -46,4 +46,7 @@
 - **Projeto finalizado e empacotado.**
 - Documentação exportada para `docs/` e `README.md`.
 
+## Próxima Etapa Pendente (Deploy)
+- **Publicação em Homologação:** Subir a versão finalizada para o GitHub e ativar o **GitHub Pages** como ambiente de teste online, antes do apontamento definitivo de domínio.
+
 
