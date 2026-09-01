@@ -46,7 +46,7 @@
 - **Projeto finalizado e empacotado.**
 - Documentação exportada para `docs/` e `README.md`.
 
-## Próxima Etapa Pendente (Deploy)
-- **Publicação em Homologação:** Subir a versão finalizada para o GitHub e ativar o **GitHub Pages** como ambiente de teste online, antes do apontamento definitivo de domínio.
-
-
+## Atualizações Recentes (Fase 6: Deploy)
+- **Publicação em Homologação:** Repositório remoto criado e código pushado com sucesso (`master`).
+- **GitHub Pages:** Ambiente de teste online habilitado e configurado para servir a partir da branch `master`.
+- **URL de Homologação:** [https://gmatheusux.github.io/tech-prevent/](https://gmatheusux.github.io/tech-prevent/)
