@@ -50,3 +50,7 @@
 - **PublicaÃ§Ã£o em HomologaÃ§Ã£o:** RepositÃ³rio remoto criado e cÃ³digo pushado com sucesso (`master`).
 - **GitHub Pages:** Ambiente de teste online habilitado e configurado para servir a partir da branch `master`.
 - **URL de HomologaÃ§Ã£o:** [https://gmatheusux.github.io/tech-prevent/](https://gmatheusux.github.io/tech-prevent/)
+
+## Correções de Copy (Fase 7: Pós-Deploy)
+- **Card 3 (B2C):** Texto ajustado para refletir o fluxo real via WhatsApp (envio de diagnóstico, aprovação de orçamento e aviso de retirada/pronto), removendo a promessa de atualizações constantes em tempo real.
+- **Card 4 (B2C):** Badge alterado de 'Vídeo de Entrega' para 'Testes em Bancada'. Copy ajustada para focar na execução de testes rigorosos em bancada, removendo a menção à gravação de vídeo.
