@@ -54,3 +54,5 @@
 ## Correções de Copy (Fase 7: Pós-Deploy)
 - **Card 3 (B2C):** Texto ajustado para refletir o fluxo real via WhatsApp (envio de diagnóstico, aprovação de orçamento e aviso de retirada/pronto), removendo a promessa de atualizações constantes em tempo real.
 - **Card 4 (B2C):** Badge alterado de 'Vídeo de Entrega' para 'Testes em Bancada'. Copy ajustada para focar na execução de testes rigorosos em bancada, removendo a menção à gravação de vídeo.
+
+- **Hero B2C:** Adicionado 'Atendimento Presencial' na tag superior (Eyebrow Badge) e como uma das opções nos checkmarks inferiores (Social Proofs). Refatorada a função 'renderHeroTemplate' para aceitar um número dinâmico de badges.

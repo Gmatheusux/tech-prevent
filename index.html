@@ -1193,7 +1193,7 @@
         const funnelData = {
             B2C: {
                 eyebrow: "Para Meu Uso Pessoal",
-                eyebrowBadge: "Laboratório Físico Avançado",
+                eyebrowBadge: "Laboratório Físico Avançado & Atendimento Presencial",
                 badgeClass: "bg-white/10 text-blue-200 border-white/20",
                 title: 'Reparo de Computadores com <span class="text-blue-400 underline decoration-4 underline-offset-8">100% de Transparência</span>.',
                 subtitle: 'Conheça a metodologia "Caixa de Vidro". Acompanhe cada etapa do conserto do seu equipamento, via whatsapp.',
@@ -1204,6 +1204,7 @@
                 ctaSecondaryLink: "#metodologia-caixa-de-vidro",
                 socialProofs: [
                     "Laboratório Físico Avançado no RJ",
+                    "Atendimento Presencial",
                     "Sistema Leva & Traz Exclusivo"
                 ],
                 socialColor: "text-blue-200"
@@ -1333,14 +1334,11 @@
 
                 <!-- Badges de Prova Social & Confianca -->
                 <div class="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm font-semibold ${data.socialColor} opacity-90">
+                    ${data.socialProofs.map(proof => `
                     <div class="flex items-center gap-2">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                        <span>${data.socialProofs[0]}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                        <span>${data.socialProofs[1]}</span>
-                    </div>
+                        <span>${proof}</span>
+                    </div>`).join('')}
                 </div>
             `;
         }
