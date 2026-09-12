@@ -485,7 +485,7 @@
                 </div>
 
                 <!-- Cards dos 3 Serviços -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                     
                     <!-- CARD 1: Reparo e Sobrevida -->
                     <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 hover:bg-slate-900/80 backdrop-blur-2xl border border-white/10 hover:border-blue-400/50 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-primary">
@@ -534,9 +534,9 @@
                         </div>
                     </article>
 
-                    <!-- CARD 2: Leva & Traz Seguro (Destaque Central) -->
+                    <!-- CARD 2: Atendimento Presencial (Destaque Central) -->
                     <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/70 hover:bg-slate-900/90 backdrop-blur-2xl border-2 border-accent/40 hover:border-accent shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-glow-accent">
-                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white font-heading font-bold text-xs uppercase tracking-wider shadow-md">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white font-heading font-bold text-xs uppercase tracking-wider shadow-md whitespace-nowrap">
                             Mais Escolhido no RJ
                         </div>
 
@@ -544,16 +544,63 @@
                             <div class="flex items-center justify-between mb-8 mt-2">
                                 <div class="w-14 h-14 rounded-2xl bg-accent/20 border border-accent/50 flex items-center justify-center text-orange-300 group-hover:bg-accent group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
                                     <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4zM4 17h1.05a2.5 2.5 0 002.45-2H16a2.5 2.5 0 002.45 2H19a2 2 0 002-2v-4a2 2 0 00-.59-1.41l-3-3A2 2 0 0016 6h-3V4a1 1 0 00-1-1H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                                     </svg>
                                 </div>
                                 <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-500/10 text-orange-300 border border-orange-500/20">
-                                    Coleta & Entrega
+                                    Visita Técnica
                                 </span>
                             </div>
 
                             <h3 class="text-2xl font-bold font-heading text-white mb-4 group-hover:text-orange-300 transition-colors">
-                                Leva & Traz Seguro
+                                Atendimento Presencial
+                            </h3>
+
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                                Resolvemos o problema diretamente na sua casa ou empresa. Nossos especialistas vão até você com as ferramentas e peças necessárias.
+                            </p>
+
+                            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Técnicos qualificados de extrema confiança</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Diagnóstico e reparo in-loco (quando possível)</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Atendimento personalizado e focado no seu setup</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="flex items-center gap-1.5 text-orange-300">
+                                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                                Solução rápida em domicílio
+                            </span>
+                            <span class="text-slate-400">Rio de Janeiro</span>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3: Leva & Traz (Rebaixado) -->
+                    <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 hover:bg-slate-900/80 backdrop-blur-2xl border border-white/10 hover:border-blue-400/50 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(59,130,246,0.25)]">
+                        <div>
+                            <div class="flex items-center justify-between mb-8 mt-2">
+                                <div class="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/50 flex items-center justify-center text-blue-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4zM4 17h1.05a2.5 2.5 0 002.45-2H16a2.5 2.5 0 002.45 2H19a2 2 0 002-2v-4a2 2 0 00-.59-1.41l-3-3A2 2 0 0016 6h-3V4a1 1 0 00-1-1H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                                    Coleta & Entrega
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold font-heading text-white mb-4 group-hover:text-blue-300 transition-colors">
+                                Leva & Traz
                             </h3>
 
                             <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -563,11 +610,11 @@
                             <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
                                 <li class="flex items-center gap-2.5">
                                     <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                                    <span>Protocolo de custódia e lacre de segurança no ato</span>
+                                    <span>Retirada em casa em diversos bairros do RJ</span>
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                                    <span>Cobertura em bairros da Zona Sul, Barra, Centro e Tijuca</span>
+                                    <span>Consulte a disponibilidade para a sua região</span>
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
@@ -577,15 +624,15 @@
                         </div>
 
                         <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-slate-400">
-                            <span class="flex items-center gap-1.5 text-orange-300">
-                                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                            <span class="flex items-center gap-1.5 text-blue-300">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
                                 Rastreamento de rota
                             </span>
-                            <span class="text-slate-400">100% Protegido</span>
+                            <span class="text-slate-400">Logística Própria</span>
                         </div>
                     </article>
 
-                    <!-- CARD 3: Montagem de PCs Customizados -->
+                    <!-- CARD 4: Montagem de PCs Customizados -->
                     <article class="group relative flex flex-col justify-between p-8 rounded-3xl bg-slate-900/50 hover:bg-slate-900/80 backdrop-blur-2xl border border-white/10 hover:border-purple-400/50 shadow-glass transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(168,85,247,0.25)]">
                         <div>
                             <div class="flex items-center justify-between mb-8">
