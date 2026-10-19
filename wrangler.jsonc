@@ -1,6 +1,11 @@
 {
   "name": "tech-prevent",
   "compatibility_date": "2026-10-19",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "techpreventsolucoes.com", "custom_domain": true },
+    { "pattern": "www.techpreventsolucoes.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./"
   }
