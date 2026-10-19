@@ -1,0 +1,10 @@
+**/.git
+.github
+.gitignore
+.nojekyll
+.assetsignore
+wrangler.jsonc
+*.md
+docs
+figma_node.json
+figma_node_utf8.json
